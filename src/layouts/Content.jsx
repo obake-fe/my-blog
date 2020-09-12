@@ -42,6 +42,7 @@ const Wrapper = styled.div`
   h5,
   h6 {
     display: inline-block;
+    font-family: "Helvetica Neue",Arial,"Hiragino Kaku Gothic ProN","Hiragino Sans",Meiryo,sans-serif;
     position: relative;
     a {
       box-shadow: none;
