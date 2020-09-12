@@ -10,20 +10,19 @@ published: true
 macOS Catalinaから標準シェルがzshになったが、デフォルトで入っているものは大抵古いバージョンなので、
 homebrewで最新のバージョンのzshをインストールしたほうがよい。
 
-## 手順
+# 手順
 
 <br>
 
-### ①Homebrewをインストールする
+## ①Homebrewをインストールする
  
 [macOS（またはLinux）用パッケージマネージャー — Homebrew](https://brew.sh/index_ja.html)
 
-#### メモ
 - Homebrewは`ruby`で書かれている。
 
 <br>
 
-### ②brew doctorコマンドでwarningを消す
+## ②brew doctorコマンドでwarningを消す
 `brew doctor`コマンドはHomebrewの問題をチェックしてくれるコマンド。
 何も問題がない場合は、以下のように表示される。
 
@@ -36,18 +35,20 @@ Your system is ready to brew.
 
 <br>
 
-### ③zshのバージョンを確認する
+## ③zshのバージョンを確認する
 
-<Br>
+<br>
 
-#### デフォルトでmacOSに入っているバージョンの確認
+・デフォルトでmacOSに入っているバージョンの確認
 
 ```
 ❯ /bin/zsh --version
 zsh 5.7.1 (x86_64-apple-darwin19.0)
 ```
 
-#### homebrewでインストールできるzshのバージョンを確認
+<br>
+
+・homebrewでインストールできるzshのバージョンを確認
 ```
 ❯ brew info zsh
 zsh: stable 5.8 (bottled), HEAD
@@ -57,7 +58,7 @@ homebrewのほうがバージョンが新しいので、こっちをインスト
 
 <br>
 
-### ④Homebrewでzshをインストールする
+## ④Homebrewでzshをインストールする
 
 ```
 brew install zsh --ignore-dependencies
@@ -67,7 +68,7 @@ brew install zsh --ignore-dependencies
 
 <br>
 
-### ⑤zshをログインシェルに設定する
+## ⑤zshをログインシェルに設定する
 
 `echo $SHELL`コマンドで、現在のログインシェルを確認。
 
@@ -102,10 +103,9 @@ chsh -s /usr/local/bin/zsh
 
 ログインシェルの変更完了。
 
-#### メモ
 - Homebrewでインストールするパッケージは、`usr/local/Celler/`配下に格納されている。
 - 同時に`/usr/loca/bin/`配下にシンボリックリンクが設定されるので、自動的にPATHが通ることになる。
 
 
-## 参考
+# 参考
 - [homebrewとは何者か。仕組みについて調べてみた - Qiita](https://qiita.com/omega999/items/6f65217b81ad3fffe7e6)

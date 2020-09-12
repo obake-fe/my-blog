@@ -50,6 +50,8 @@ console.log(elms.length);
 [NodeList - Web API | MDN](https://developer.mozilla.org/ja/docs/Web/API/NodeList)
 &nbsp;&nbsp;👻&nbsp;&nbsp;>&nbsp;forEach()とかも使えるのか..
 
+<br>
+
 ## 🐳&nbsp;[].slice
 
 `Array.prototype.slice()`メソッドは、配列を切り抜くメソッド。<br>
@@ -71,6 +73,8 @@ console.log(copyArr);    // ['hoge', 'fuga', 'piyo']
 
 `[].slice()`と指定した場合は、空の配列をコピーすることになる。<br>
 が、ここでそれは重要ではなくて、**「slice()の引数に何も指定しない場合、配列をshallow copyすることができる。」**だけ覚えれば良いと思われ。
+
+<br>
 
 ## 🐳&nbsp;call()
 
@@ -105,6 +109,8 @@ const sliceElmArr = [].slice.call(elms, 1, 3);
 
 のような形で指定ができる。
 
+<br>
+
 ## 🐳&nbsp;ES6以降では
 
 ES6記法が使えるなら`Array.from()`やスプレッド演算子を使えばおk
@@ -118,7 +124,7 @@ const elmArr1 = Array.from(elms);
 const elmArr2 = [...elms];
 ```
 
-
+<br>
 
 ## 🐳&nbsp;おまけ知見
 <br>
@@ -144,6 +150,7 @@ func1(1, 2);
 const elmArr = Array.prototype.slice.call(elms);
 ```
 
+<br>
 
 ## 🐳&nbsp;参考
 - [JavaScriptの配列風オブジェクトと「[].slice.call()」による配列変換について - このすみ技術メモ](https://www.konosumi.net/entry/2019/05/26/220321)
