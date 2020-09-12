@@ -55,9 +55,10 @@ const prism = css`
   li > code[class*='language-'] {
     border-radius: 0.3em;
     background: rgba(52, 152, 219, 0.2);
-    color: #2e3246;
+    color: #fff;
     bottom: 2px;
     position: relative;
+    font-size: 1rem;
   }
   .token.operator {
     color: #bc78d7;

@@ -34,9 +34,12 @@ const Layout = ({ children }) => (
             height: 100%;
             margin: 0;
             padding: 0;
+            font-size: 16px;
           }
 
           body {
+            color: #fff;
+            background-color: #282c34;
             display: flex;
             flex-direction: column;
             min-height: 100vh;

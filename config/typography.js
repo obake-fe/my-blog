@@ -20,7 +20,7 @@ export const typography = new Typography({
     "Meiryo",
     "sans-serif"
   ],
-  headerWeight: 500,
+  headerWeight: 600,
 });
 
 export default typography;
