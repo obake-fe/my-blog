@@ -26,7 +26,7 @@ homebrewで最新のバージョンのzshをインストールしたほうがよ
 `brew doctor`コマンドはHomebrewの問題をチェックしてくれるコマンド。
 何も問題がない場合は、以下のように表示される。
 
-```
+```shell:title=zsh
 ❯ brew doctor
 Your system is ready to brew.
 ```
@@ -41,7 +41,7 @@ Your system is ready to brew.
 
 ・デフォルトでmacOSに入っているバージョンの確認
 
-```
+```shell:title=zsh
 ❯ /bin/zsh --version
 zsh 5.7.1 (x86_64-apple-darwin19.0)
 ```
@@ -49,7 +49,7 @@ zsh 5.7.1 (x86_64-apple-darwin19.0)
 <br>
 
 ・homebrewでインストールできるzshのバージョンを確認
-```
+```shell:title=zsh
 ❯ brew info zsh
 zsh: stable 5.8 (bottled), HEAD
 ```
@@ -60,8 +60,8 @@ homebrewのほうがバージョンが新しいので、こっちをインスト
 
 ## ④Homebrewでzshをインストールする
 
-```
-brew install zsh --ignore-dependencies
+```shell:title=zsh
+❯ brew install zsh --ignore-dependencies
 ```
 
 `brew install --without-etcdir zsh`でインストールすると書いてあるサイトも多いが、`--without-etcdir`のオプションは無くなったようでエラーが起こる。(2020/08現在)
@@ -72,7 +72,7 @@ brew install zsh --ignore-dependencies
 
 `echo $SHELL`コマンドで、現在のログインシェルを確認。
 
-```
+```shell:title=zsh
 ❯ echo $SHELL
 /bin/zsh
 ```
@@ -80,7 +80,7 @@ brew install zsh --ignore-dependencies
 
 `/etc/shells`に今回`homebrew`でインストールしたzshのフルパスを記入する。
 
-```
+```shell:title=zsh
 /bin/bash
 /bin/csh
 /bin/ksh
@@ -91,12 +91,12 @@ brew install zsh --ignore-dependencies
 ```
 
 `chsh`コマンドでログインシェルを切り替える。
-```
-chsh -s /usr/local/bin/zsh
+```shell:title=zsh
+❯ chsh -s /usr/local/bin/zsh
 ```
 
 ターミナルを再起動して、再度ログインシェルを確認する。
-```
+```shell:title=zsh
 ❯ echo $SHELL
 /usr/local/bin/zsh
 ```

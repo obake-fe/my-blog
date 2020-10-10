@@ -27,6 +27,7 @@ module.exports = {
               linkImagesToOriginal: true,
             },
           },
+          'gatsby-remark-prismjs-title',
           'gatsby-remark-prismjs',
         ],
       },

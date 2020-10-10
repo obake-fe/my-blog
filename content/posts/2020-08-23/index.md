@@ -8,7 +8,7 @@ published: true
 ---
 どうやら配列風オブジェクトを配列に変換する記法らしい。
 
-```JS
+```JS:title=JS
 //配列風オブジェクト
 const elms = document.querySelectorAll('.elm');
 
@@ -27,7 +27,7 @@ elmArr.slice();
 `Document.querySelectorAll()`メソッドは、配列風オブジェクトである`NodeList`を取得する。<br>
 NodeListはArrayオブジェクトを継承していないので、`slice`や`push`などの`Array.prototype`が持つメソッドを使用できない。
 
-```JS
+```JS:title=JS
 //配列風オブジェクト
 const elms = document.querySelectorAll('.elm');
 
@@ -42,7 +42,7 @@ elms.slice();  // エラーが起こる
 ※ちなみに`length`プロパティは使用できる。（NodeListにもlengthプロパティが存在するため）<br>
 というか配列風オブジェクトはlengthを使えることが定義の1つらしい。
 
-```JS
+```JS:title=JS
 // NodeListに含まれるノードの数を取得
 console.log(elms.length);  
 ```
@@ -57,7 +57,7 @@ console.log(elms.length);
 `Array.prototype.slice()`メソッドは、配列を切り抜くメソッド。<br>
 引数に何も指定しない場合、配列をshallow copyすることができる。
 
-```js
+```js:title=JS
 const arr = ['hoge', 'fuga', 'piyo']
 
 const sliceArr1 = arr.slice(2);
@@ -84,7 +84,7 @@ MDNによると、
 
 つまり最初の例の場合、`Array.prototype`に所属する`slice()`メソッドを、引数に指定した配列風オブジェクトの`elms`に割り当てて呼び出している。
 
-```JS
+```JS:title=JS
 //配列風オブジェクト
 const elms = document.querySelectorAll('.elm');
 
@@ -102,7 +102,7 @@ const elmArr = [].slice.call(elms);
 call()は第2引数以降に、呼び出し先の関数に渡される引数を指定することができる。<br>
 つまり、この場合でslice()に引数を渡したい場合は、
 
-```js
+```js:title=JS
 // 配列風オブジェクトを任意の形にsliceして配列に変換
 const sliceElmArr = [].slice.call(elms, 1, 3);
 ```
@@ -115,7 +115,7 @@ const sliceElmArr = [].slice.call(elms, 1, 3);
 
 ES6記法が使えるなら`Array.from()`やスプレッド演算子を使えばおk
 
-```JS
+```JS:title=JS
 //配列風オブジェクト
 const elms = document.querySelectorAll('.elm');
 
@@ -135,7 +135,7 @@ const elmArr2 = [...elms];
 すべての関数内（アロー関数を除く）で利用可能なローカル変数であり、関数の引数を参照することができる。
 [arguments - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Functions/arguments)
 
-```js
+```js:title=JS
 const func = function(arg1, arg2) {
   console.log(arguments); // [1, 2]
 };
@@ -146,7 +146,7 @@ func1(1, 2);
 ### 🐠&nbsp;[].sliceは省略形
 空配列[]を使用するのは省略形の書き方。slice()を使いたいだけなので以下の書き方でも良い。
 
-```js
+```js:title=JS
 const elmArr = Array.prototype.slice.call(elms);
 ```
 

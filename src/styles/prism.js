@@ -33,8 +33,8 @@ const prism = css`
     hyphens: none;
   }
   pre[class*='language-'] {
-    padding: 1em;
-    margin: 1.5rem 0;
+    padding: 1.8rem 1em 1em;
+    margin: 0 0 1.5rem;
     overflow: auto;
     border-radius: 0.3em;
     &::-webkit-scrollbar-thumb {
@@ -126,6 +126,27 @@ const prism = css`
   }
   .token.entity {
     cursor: help;
+  }
+  .gatsby-highlight {
+    margin-top: -20px;
+  }
+  .gatsby-code-title {
+    display: block;
+    position: relative;
+    font-size: 0.8rem;
+    width: 100%;
+    left: 1rem;
+  }
+  .gatsby-code-title span {
+    display: inline;
+    position: relative;
+    font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+    color: #fff;
+    background: rgba(52,152,219,0.2);
+    border-bottom-right-radius: 0.3em;
+    border-bottom-left-radius: 0.3em;
+    padding: 3px;
+    top: 1px;
   }
 `;
 
