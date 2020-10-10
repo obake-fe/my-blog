@@ -2,7 +2,7 @@
 path: "/post-3"
 cover: "./blocks.jpg"
 date: "2020-10-11"
-title: "GatsbyJSでコードタイトルを追加する"
+title: "GatsbyJSにコードタイトルを追加する"
 tags: ['GatsbyJS','JavaScript']
 published: true
 ---
@@ -88,7 +88,7 @@ https://www.gatsbyjs.com/plugins/gatsby-remark-prismjs-title/
 
 ## マークダウンによる記述方法
 
-`:title=表示するタイトル`の形式で設定します。
+`:title=表示するタイトル`の形式で設定する。
 
 例）JavaScriptの言語設定でコードタイトルを`index.js`にしたい場合<br>
 `js:title=index.js`
