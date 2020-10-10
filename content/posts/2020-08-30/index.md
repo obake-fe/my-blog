@@ -10,11 +10,11 @@ published: true
 macOS Catalinaから標準シェルがzshになったが、デフォルトで入っているものは大抵古いバージョンなので、
 homebrewで最新のバージョンのzshをインストールしたほうがよい。
 
-# 手順
+## 手順
 
 <br>
 
-## ①Homebrewをインストールする
+### ①Homebrewをインストールする
  
 [macOS（またはLinux）用パッケージマネージャー — Homebrew](https://brew.sh/index_ja.html)
 
@@ -22,12 +22,12 @@ homebrewで最新のバージョンのzshをインストールしたほうがよ
 
 <br>
 
-## ②brew doctorコマンドでwarningを消す
+### ②brew doctorコマンドでwarningを消す
 `brew doctor`コマンドはHomebrewの問題をチェックしてくれるコマンド。
 何も問題がない場合は、以下のように表示される。
 
 ```shell:title=zsh
-❯ brew doctor
+❯  brew doctor
 Your system is ready to brew.
 ```
 
@@ -35,14 +35,14 @@ Your system is ready to brew.
 
 <br>
 
-## ③zshのバージョンを確認する
+### ③zshのバージョンを確認する
 
 <br>
 
 ・デフォルトでmacOSに入っているバージョンの確認
 
 ```shell:title=zsh
-❯ /bin/zsh --version
+❯  /bin/zsh --version
 zsh 5.7.1 (x86_64-apple-darwin19.0)
 ```
 
@@ -50,7 +50,7 @@ zsh 5.7.1 (x86_64-apple-darwin19.0)
 
 ・homebrewでインストールできるzshのバージョンを確認
 ```shell:title=zsh
-❯ brew info zsh
+❯  brew info zsh
 zsh: stable 5.8 (bottled), HEAD
 ```
 
@@ -58,22 +58,22 @@ homebrewのほうがバージョンが新しいので、こっちをインスト
 
 <br>
 
-## ④Homebrewでzshをインストールする
+### ④Homebrewでzshをインストールする
 
 ```shell:title=zsh
-❯ brew install zsh --ignore-dependencies
+❯  brew install zsh --ignore-dependencies
 ```
 
 `brew install --without-etcdir zsh`でインストールすると書いてあるサイトも多いが、`--without-etcdir`のオプションは無くなったようでエラーが起こる。(2020/08現在)
 
 <br>
 
-## ⑤zshをログインシェルに設定する
+### ⑤zshをログインシェルに設定する
 
 `echo $SHELL`コマンドで、現在のログインシェルを確認。
 
 ```shell:title=zsh
-❯ echo $SHELL
+❯  echo $SHELL
 /bin/zsh
 ```
 `/usr/local/bin/zsh`ではない場合は、ログインシェルの設定が必要。
@@ -92,12 +92,12 @@ homebrewのほうがバージョンが新しいので、こっちをインスト
 
 `chsh`コマンドでログインシェルを切り替える。
 ```shell:title=zsh
-❯ chsh -s /usr/local/bin/zsh
+❯  chsh -s /usr/local/bin/zsh
 ```
 
 ターミナルを再起動して、再度ログインシェルを確認する。
 ```shell:title=zsh
-❯ echo $SHELL
+❯  echo $SHELL
 /usr/local/bin/zsh
 ```
 
@@ -107,5 +107,5 @@ homebrewのほうがバージョンが新しいので、こっちをインスト
 - 同時に`/usr/loca/bin/`配下にシンボリックリンクが設定されるので、自動的にPATHが通ることになる。
 
 
-# 参考
+## 参考
 - [homebrewとは何者か。仕組みについて調べてみた - Qiita](https://qiita.com/omega999/items/6f65217b81ad3fffe7e6)
