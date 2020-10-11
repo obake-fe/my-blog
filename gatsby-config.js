@@ -29,6 +29,13 @@ module.exports = {
           },
           'gatsby-remark-prismjs-title',
           'gatsby-remark-prismjs',
+          {
+            resolve: `gatsby-remark-external-links`,
+            options: {
+              // target=_blankの脆弱性対策
+              rel: "noopener noreferrer",
+            }
+          },
         ],
       },
     },
