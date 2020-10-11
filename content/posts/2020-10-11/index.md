@@ -2,7 +2,7 @@
 path: "/post-3"
 cover: "./blocks.jpg"
 date: "2020-10-11"
-title: "GatsbyJSにコードタイトルを追加する"
+title: "GatsbyJS製ブログに「コードタイトル設定機能」を追加する"
 tags: ['GatsbyJS','JavaScript']
 published: true
 ---

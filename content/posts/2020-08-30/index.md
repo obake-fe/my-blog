@@ -1,5 +1,5 @@
 ---
-path: "/post-six"
+path: "/post-2"
 cover: "./blocks.jpg"
 date: "2020-08-30"
 title: "Homebrewでzshをインストールする"

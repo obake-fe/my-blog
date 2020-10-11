@@ -1,5 +1,5 @@
 ---
-path: "/post-seven"
+path: "/post-1"
 cover: "./blocks.jpg"
 date: "2020-08-23"
 title: "[].slice.call()とは"
