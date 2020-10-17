@@ -27,6 +27,12 @@ module.exports = {
               linkImagesToOriginal: true,
             },
           },
+          {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              offsetY: `16`
+            }
+          },
           'gatsby-remark-prismjs-title',
           'gatsby-remark-prismjs',
           {
