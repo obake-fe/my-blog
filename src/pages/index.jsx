@@ -25,7 +25,7 @@ const Index = ({ data }) => {
   return (
     <Layout>
       <Helmet title={'Home Page'} />
-      <Header title="Obake Engineer Blog">幽霊社員ブログです</Header>
+      <Header title="Obake Engineer Blog">幽霊社員の備忘録です</Header>
       <PostWrapper>
         {edges.map(({ node }) => {
           const { id, excerpt, frontmatter } = node;
