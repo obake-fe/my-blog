@@ -18,7 +18,7 @@ console.log(hoge) // [ 1, 3, 5, 7, 9]
 ## 解説
 
 >`Array.prototype.filter()`は、与えられた`callback`関数を配列の各要素に対して一度ずつ呼び出し、`callback`が`true`と評価される値を返したすべての要素からなる新しい配列を生成します。<br>
-
+<br>
 引用：[Array.prototype.filter() - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
 
 通常は、以下のようにcallback関数に条件式を定義するが、要素をそのまま`return`することによって、`true`に評価される要素だけの配列を作ることができる。

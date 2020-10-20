@@ -2,9 +2,11 @@ import React from 'react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import prism from '../styles/prism';
+import post from '../styles/post';
 
 const Wrapper = styled.div`
   ${prism};
+  ${post};
   p,
   li {
     letter-spacing: -0.003em;
