@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
-import { ThemeProvider } from 'emotion-theming';
-import { css, Global } from '@emotion/core';
+import { css, Global, ThemeProvider } from '@emotion/react';
 import PropTypes from 'prop-types';
 import 'typeface-open-sans';
 import 'typeface-candal';

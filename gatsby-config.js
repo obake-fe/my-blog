@@ -48,7 +48,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-emotion',
       options: {
-        autoLabel: process.env.NODE_ENV !== 'production',
+        autoLabel: 'dev-only',
         // eslint-disable-next-line
         labelFormat: `[filename]--[local]`,
       },
