@@ -1,5 +1,8 @@
 {
-  "parser": "babel-eslint",
+  "parserOptions": {
+    "parser": "@babel/eslint-parser",
+    "requireConfigFile": false
+  },
   "env": {
     "browser": true,
     "node": true,
@@ -21,9 +24,7 @@
         "extensions": [".js", ".jsx"]
       }
     ],
-    "prettier/prettier": ["warn", "error", {
-     "endOfLine":"auto"
-   }]
+    "prettier/prettier": ["error"]
   },
   "extends": [
     "eslint:recommended",

@@ -60,7 +60,7 @@
     "typography": "^0.16.21"
   },
   "devDependencies": {
-    "babel-eslint": "^10.0.3",
+    "@babel/eslint-parser": "^7.17.0",
     "eslint": "^8.16.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
