@@ -1,4 +1,4 @@
-module.exports = {
+export const site = {
   pathPrefix: '/', // Prefix for all links. If you deploy your site to example.com/portfolio your pathPrefix should be "portfolio"
   title: 'Obake Engineer Blog', // Navigation and Site Title
   titleAlt: 'Obake Engineer Blog', // Title for JSONLD

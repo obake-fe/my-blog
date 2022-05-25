@@ -1,10 +1,15 @@
 import React from 'react';
-import { graphql, PageProps } from 'gatsby';
+import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
 import { Header, BlogList } from '@components/index';
 import { Layout } from '@layouts/index';
+import { PagesBlogQuery } from '../../types/graphql-types';
 
-function Blog({ data }: PageProps<GatsbyTypes.BlogQuery>) {
+type Props = {
+  data: PagesBlogQuery;
+};
+
+const Blog: React.FC<Props> = ({ data }) => {
   const { edges } = data.allMarkdownRemark;
   return (
     <Layout>
@@ -23,12 +28,12 @@ function Blog({ data }: PageProps<GatsbyTypes.BlogQuery>) {
       ))}
     </Layout>
   );
-}
+};
 
 export default Blog;
 
 export const query = graphql`
-  query Blog {
+  query PagesBlog {
     allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
       edges {
         node {

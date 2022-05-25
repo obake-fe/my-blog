@@ -1,4 +1,14 @@
-const path = require('path');
+import path from 'path';
+import { MarkdownRemark } from './types/graphql-types';
+
+export type PageContext = {
+  pageContext: {
+    tags?: string[];
+    pathSlug?: string;
+    prev?: MarkdownRemark | null;
+    next?: MarkdownRemark | null;
+  };
+};
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
@@ -27,6 +37,7 @@ exports.createPages = ({ graphql, actions }) => {
             }
           }
         `
+        // eslint-disable-next-line consistent-return
       ).then((result) => {
         if (result.errors) {
           return reject(result.errors);
@@ -60,13 +71,13 @@ exports.createPages = ({ graphql, actions }) => {
 
         // create tags
         tags.forEach((tagName) => {
-          const posts = postsByTag[tagName];
+          const postsTag = postsByTag[tagName];
 
           createPage({
             path: `/tags/${tagName}`,
             component: tagPosts,
             context: {
-              posts,
+              posts: postsTag,
               tagName
             }
           });
@@ -74,15 +85,15 @@ exports.createPages = ({ graphql, actions }) => {
 
         // create posts
         posts.forEach(({ node }, index) => {
-          const { path } = node.frontmatter;
+          const pathSlug = node.frontmatter.path;
           const prev = index === 0 ? null : posts[index - 1].node;
           const next =
             index === posts.length - 1 ? null : posts[index + 1].node;
           createPage({
-            path,
+            path: pathSlug,
             component: postTemplate,
             context: {
-              pathSlug: path,
+              pathSlug,
               prev,
               next
             }

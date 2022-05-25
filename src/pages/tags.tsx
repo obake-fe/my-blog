@@ -1,8 +1,11 @@
 import React from 'react';
 import { Layout, Container } from '@layouts/index';
 import { Header, TagsBlock } from '@components/index';
+import { PageContext } from '../../gatsby-node';
 
-function Tags({ pageContext }) {
+type Props = PageContext;
+
+const Tags: React.FC<Props> = ({ pageContext }) => {
   const { tags } = pageContext;
 
   return (
@@ -13,6 +16,6 @@ function Tags({ pageContext }) {
       </Container>
     </Layout>
   );
-}
+};
 
 export default Tags;

@@ -1,9 +1,10 @@
 import React from 'react';
-import { graphql, PageProps } from 'gatsby';
+import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
 import styled from '@emotion/styled';
 import { Header, PostList } from '@components/index';
 import { Layout } from '@layouts/index';
+import { PagesIndexQuery } from '../../types/graphql-types';
 
 const PostWrapper = styled.div`
   display: flex;
@@ -19,7 +20,11 @@ const PostWrapper = styled.div`
   }
 `;
 
-function Index({ data }: PageProps<GatsbyTypes.pagesIndexQuery>) {
+type Props = {
+  data: PagesIndexQuery;
+};
+
+const Index: React.FC<Props> = ({ data }) => {
   const { edges } = data.allMarkdownRemark;
   return (
     <Layout>
@@ -43,7 +48,7 @@ function Index({ data }: PageProps<GatsbyTypes.pagesIndexQuery>) {
       </PostWrapper>
     </Layout>
   );
-}
+};
 
 export default Index;
 
