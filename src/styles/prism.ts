@@ -1,12 +1,13 @@
 import { css } from '@emotion/react';
-import theme from '../../config/theme';
+import theme from '@config/theme';
 
 const prism = css`
   p > code,
   li > code {
     color: #f8f8f2;
     background: #131316;
-    font-family: "Helvetica Neue",Arial,"Hiragino Kaku Gothic ProN","Hiragino Sans",Meiryo,sans-serif;
+    font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN',
+      'Hiragino Sans', Meiryo, sans-serif;
     text-align: left;
     word-spacing: normal;
     word-break: normal;
@@ -23,7 +24,8 @@ const prism = css`
   pre[class*='language-'] {
     color: #f8f8f2;
     background: none;
-    font-family: "Helvetica Neue",Arial,"Hiragino Kaku Gothic ProN","Hiragino Sans",Meiryo,sans-serif;
+    font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN',
+      'Hiragino Sans', Meiryo, sans-serif;
     text-align: left;
     word-spacing: normal;
     word-break: normal;
@@ -140,9 +142,9 @@ const prism = css`
   .gatsby-code-title span {
     display: inline;
     position: relative;
-    font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
     color: #fff;
-    background: rgba(52,152,219,0.2);
+    background: rgba(52, 152, 219, 0.2);
     border-bottom-right-radius: 0.3em;
     border-bottom-left-radius: 0.3em;
     padding: 3px;

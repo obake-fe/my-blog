@@ -57,10 +57,10 @@ https://www.gatsbyjs.com/plugins/gatsby-remark-prismjs-title/
 
 ### ③cssを設定する
 
-`prism.js`内のcss設定にコードタイトルのcssを追加する。
+`prism.ts`内のcss設定にコードタイトルのcssを追加する。
 
 
-```css:title=prism.js
+```css:title=prism.ts
 /* 以下追記 */
 .gatsby-code-title {
   display: block;

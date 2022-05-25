@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import theme from '../../config/theme';
+import theme from '@config/theme';
 
 const headroom = css`
   .headroom-wrapper {
