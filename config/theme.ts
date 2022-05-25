@@ -3,22 +3,22 @@ export const colors = {
     base: '#fff',
     light: '#f0f0f0',
     grey: '#cecece',
-    dark: '#a0afd7',
+    dark: '#a0afd7'
   },
   black: {
     base: '#333438',
     light: '#4b4e57',
-    blue: '#2e3246',
+    blue: '#2e3246'
   },
   primary: {
     base: '#3498db',
     light: '#3e5fbc',
-    dark: '#284187',
+    dark: '#284187'
   },
   background: {
     light: '#3e5fbc',
-    dark: '#284187',
-  },
+    dark: '#284187'
+  }
 };
 
 export const shadow = {
@@ -29,17 +29,17 @@ export const shadow = {
   feature: {
     big: {
       default: '0 40px 40px rgba(0, 0, 0, 0.2)',
-      hover: '0 50px 50px rgba(0, 0, 0, 0.1)',
+      hover: '0 50px 50px rgba(0, 0, 0, 0.1)'
     },
     small: {
       default: '0 15px 25px rgba(0, 0, 0, 0.2)',
-      hover: '0 40px 45px rgba(0, 0, 0, 0.1)',
-    },
+      hover: '0 40px 45px rgba(0, 0, 0, 0.1)'
+    }
   },
   text: {
     small: '0 5px 10px rgba(0, 0, 0, 0.25)',
-    big: '0 15px 20px rgba(0, 0, 0, 0.13)',
-  },
+    big: '0 15px 20px rgba(0, 0, 0, 0.13)'
+  }
 };
 
 export const gradient = {
@@ -52,7 +52,7 @@ export const gradient = {
 export const transition = {
   easeInOutCubic: 'cubic-bezier(0.645, 0.045, 0.355, 1)',
   easeOutBack: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)',
-  duration: '0.4s',
+  duration: '0.4s'
 };
 
 export const theme = {
@@ -63,7 +63,7 @@ export const theme = {
     xs: '400px',
     s: '600px',
     m: '900px',
-    l: '1200px',
+    l: '1200px'
   },
   fontFamily: {
     // eslint-disable-next-line
@@ -79,32 +79,36 @@ export const theme = {
     "Hiragino Kaku Gothic ProN",
     "Hiragino Sans",
     Meiryo,
-    sans-serif`,
+    sans-serif`
   },
   layout: {
     article: '46rem',
     base: '70rem',
-    big: '83.33333rem',
+    big: '83.33333rem'
   },
   borderRadius: {
     default: '0.4rem',
-    round: '100rem',
+    round: '100rem'
   },
   transitions: {
     default: {
       duration: transition.duration,
       timing: transition.easeInOutCubic,
-      transition: `all ${transition.duration} ${transition.easeInOutCubic}`,
+      transition: `all ${transition.duration} ${transition.easeInOutCubic}`
     },
     boom: {
       duration: transition.duration,
       timing: transition.easeOutBack,
-      transition: `all ${transition.duration} ${transition.easeOutBack}`,
+      transition: `all ${transition.duration} ${transition.easeOutBack}`
     },
     headroom: {
-      transition: 'all 0.25s ease-in-out',
-    },
-  },
+      transition: 'all 0.25s ease-in-out'
+    }
+  }
 };
+
+type Theme = typeof theme;
+
+export type { Theme };
 
 export default theme;

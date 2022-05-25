@@ -20,7 +20,8 @@
       "@config/*": ["./config/*"],
       "@static/*": ["./static/*"],
     },
+    "jsxImportSource": "@emotion/react",
     "allowSyntheticDefaultImports": true,
-    "jsx": "react"
+    "jsx": "react-jsx"
   }
 }

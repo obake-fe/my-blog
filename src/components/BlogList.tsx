@@ -79,7 +79,7 @@ const Information = styled.div`
 
 const Date = styled.div`
   margin-top: 1rem;
-  color: ${(props) => props.theme.colors.black.lighter};
+  color: ${(props) => props.theme.colors.black.light};
 `;
 
 const Title = styled.h1`
