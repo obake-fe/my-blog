@@ -4,9 +4,9 @@ exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
 
   return new Promise((resolve, reject) => {
-    const postTemplate = path.resolve('src/templates/post.jsx');
-    const tagPage = path.resolve('src/pages/tags.jsx');
-    const tagPosts = path.resolve('src/templates/tag.jsx');
+    const postTemplate = path.resolve('src/templates/post.tsx');
+    const tagPage = path.resolve('src/pages/tags.tsx');
+    const tagPosts = path.resolve('src/templates/tag.tsx');
 
     resolve(
       graphql(
@@ -27,7 +27,7 @@ exports.createPages = ({ graphql, actions }) => {
             }
           }
         `
-      ).then(result => {
+      ).then((result) => {
         if (result.errors) {
           return reject(result.errors);
         }
@@ -38,7 +38,7 @@ exports.createPages = ({ graphql, actions }) => {
         // create tags page
         posts.forEach(({ node }) => {
           if (node.frontmatter.tags) {
-            node.frontmatter.tags.forEach(tag => {
+            node.frontmatter.tags.forEach((tag) => {
               if (!postsByTag[tag]) {
                 postsByTag[tag] = [];
               }
@@ -54,12 +54,12 @@ exports.createPages = ({ graphql, actions }) => {
           path: '/tags',
           component: tagPage,
           context: {
-            tags: tags.sort(),
-          },
+            tags: tags.sort()
+          }
         });
 
-        //create tags
-        tags.forEach(tagName => {
+        // create tags
+        tags.forEach((tagName) => {
           const posts = postsByTag[tagName];
 
           createPage({
@@ -67,14 +67,14 @@ exports.createPages = ({ graphql, actions }) => {
             component: tagPosts,
             context: {
               posts,
-              tagName,
-            },
+              tagName
+            }
           });
         });
 
-        //create posts
+        // create posts
         posts.forEach(({ node }, index) => {
-          const path = node.frontmatter.path;
+          const { path } = node.frontmatter;
           const prev = index === 0 ? null : posts[index - 1].node;
           const next =
             index === posts.length - 1 ? null : posts[index + 1].node;
@@ -84,8 +84,8 @@ exports.createPages = ({ graphql, actions }) => {
             context: {
               pathSlug: path,
               prev,
-              next,
-            },
+              next
+            }
           });
         });
       })
@@ -97,7 +97,16 @@ exports.createPages = ({ graphql, actions }) => {
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
-      modules: [path.resolve(__dirname, 'src'), 'node_modules'],
-    },
+      alias: {
+        '@components': path.resolve(__dirname, 'src/components'),
+        '@layouts': path.resolve(__dirname, 'src/layouts'),
+        '@pages': path.resolve(__dirname, 'src/pages'),
+        '@styles': path.resolve(__dirname, 'src/styles'),
+        '@templates': path.resolve(__dirname, 'src/templates'),
+        '@config': path.resolve(__dirname, 'config'),
+        '@static': path.resolve(__dirname, 'static')
+      },
+      modules: [path.resolve(__dirname, 'src'), 'node_modules']
+    }
   });
 };

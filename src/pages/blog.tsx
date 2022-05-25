@@ -2,14 +2,14 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
-import { Header, BlogList } from 'components';
-import { Layout } from 'layouts';
+import { Header, BlogList } from '@components/index';
+import { Layout } from '@layouts/index';
 
-const Blog = ({ data }) => {
+function Blog({ data }) {
   const { edges } = data.allMarkdownRemark;
   return (
     <Layout>
-      <Helmet title={'Blog Page'} />
+      <Helmet title="Blog Page" />
       <Header title="Blog Page">Gatsby Tutorial Starter</Header>
       {edges.map(({ node }) => (
         <BlogList
@@ -24,7 +24,7 @@ const Blog = ({ data }) => {
       ))}
     </Layout>
   );
-};
+}
 
 export default Blog;
 
@@ -40,13 +40,13 @@ Blog.propTypes = {
               path: PropTypes.string.isRequired,
               title: PropTypes.string.isRequired,
               date: PropTypes.string.isRequired,
-              tags: PropTypes.array,
-            }),
-          }),
+              tags: PropTypes.array
+            })
+          })
         }).isRequired
-      ),
-    }),
-  }),
+      )
+    })
+  })
 };
 
 export const query = graphql`

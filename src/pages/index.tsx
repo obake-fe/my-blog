@@ -3,8 +3,8 @@ import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import styled from '@emotion/styled';
-import { Header, PostList } from 'components';
-import { Layout } from 'layouts';
+import { Header, PostList } from '@components/index';
+import { Layout } from '@layouts/index';
 
 const PostWrapper = styled.div`
   display: flex;
@@ -20,11 +20,11 @@ const PostWrapper = styled.div`
   }
 `;
 
-const Index = ({ data }) => {
+function Index({ data }) {
   const { edges } = data.allMarkdownRemark;
   return (
     <Layout>
-      <Helmet title={'Home Page'} />
+      <Helmet title="Home Page" />
       <Header title="Obake Engineer Blog">幽霊社員の備忘録です</Header>
       <PostWrapper>
         {edges.map(({ node }) => {
@@ -44,7 +44,7 @@ const Index = ({ data }) => {
       </PostWrapper>
     </Layout>
   );
-};
+}
 
 export default Index;
 
@@ -60,13 +60,13 @@ Index.propTypes = {
               path: PropTypes.string.isRequired,
               title: PropTypes.string.isRequired,
               date: PropTypes.string.isRequired,
-              tags: PropTypes.array,
-            }),
-          }),
+              tags: PropTypes.array
+            })
+          })
         }).isRequired
-      ),
-    }),
-  }),
+      )
+    })
+  })
 };
 
 export const query = graphql`

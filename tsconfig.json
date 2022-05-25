@@ -10,6 +10,16 @@
   "skipLibCheck": true,
   "forceConsistentCasingInFileNames": true,
   "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@components/*": ["./src/components/*"],
+      "@layouts/*": ["./src/layouts/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@styles/*": ["./src/styles/*"],
+      "@templates/*": ["./src/templates/*"],
+      "@config/*": ["./config/*"],
+      "@static/*": ["./static/*"],
+    },
     "allowSyntheticDefaultImports": true,
     "jsx": "react"
   }

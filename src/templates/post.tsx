@@ -2,16 +2,16 @@ import React from 'react';
 import { graphql, Link } from 'gatsby';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
-import { Layout, Container, Content } from 'layouts';
-import { TagsBlock, Header, SEO } from 'components';
-import '../styles/prism';
+import { Layout, Container, Content } from '@layouts/index';
+import { TagsBlock, Header, SEO } from '@components/index';
+import '@styles/prism';
 
 const SuggestionBar = styled.div`
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
-  background: ${props => props.theme.colors.white.light};
-  box-shadow: ${props => props.theme.shadow.suggestion};
+  background: ${(props) => props.theme.colors.white.light};
+  box-shadow: ${(props) => props.theme.shadow.suggestion};
 `;
 const PostSuggestion = styled.div`
   display: flex;
@@ -19,10 +19,10 @@ const PostSuggestion = styled.div`
   margin: 1rem 3rem 0 3rem;
 `;
 
-const Post = ({ data, pageContext }) => {
+function Post({ data, pageContext }) {
   const { next, prev } = pageContext;
-  const {html, frontmatter, excerpt } = data.markdownRemark
-  const {date, title, tags, path, description} = frontmatter
+  const { html, frontmatter, excerpt } = data.markdownRemark;
+  const { date, title, tags, path, description } = frontmatter;
   const image = frontmatter.cover.childImageSharp.fluid;
 
   return (
@@ -59,20 +59,20 @@ const Post = ({ data, pageContext }) => {
       </SuggestionBar>
     </Layout>
   );
-};
+}
 
 export default Post;
 
 Post.propTypes = {
   pageContext: PropTypes.shape({
     prev: PropTypes.object,
-    next: PropTypes.object,
+    next: PropTypes.object
   }).isRequired,
-  data: PropTypes.object.isRequired,
+  data: PropTypes.object.isRequired
 };
 
 export const query = graphql`
-  query($pathSlug: String!) {
+  query ($pathSlug: String!) {
     markdownRemark(frontmatter: { path: { eq: $pathSlug } }) {
       html
       frontmatter {

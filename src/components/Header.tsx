@@ -6,16 +6,16 @@ import PropTypes from 'prop-types';
 const Wrapper = styled.header`
   -webkit-clip-path: polygon(100% 0, 0 0, 0 70%, 50% 100%, 100% 70%);
   clip-path: polygon(100% 0, 0 0, 0 70%, 50% 100%, 100% 70%);
-  @media (max-width: ${props => props.theme.breakpoints.s}) {
+  @media (max-width: ${(props) => props.theme.breakpoints.s}) {
     -webkit-clip-path: polygon(100% 0, 0 0, 0 90%, 50% 100%, 100% 90%);
     clip-path: polygon(100% 0, 0 0, 0 90%, 50% 100%, 100% 90%);
   }
-  background: ${props => props.theme.gradient.rightToLeft};
+  background: ${(props) => props.theme.gradient.rightToLeft};
   height: 300px;
-  @media (max-width: ${props => props.theme.breakpoints.m}) {
+  @media (max-width: ${(props) => props.theme.breakpoints.m}) {
     height: 300px;
   }
-  @media (max-width: ${props => props.theme.breakpoints.s}) {
+  @media (max-width: ${(props) => props.theme.breakpoints.s}) {
     height: 275px;
   }
   position: relative;
@@ -23,7 +23,7 @@ const Wrapper = styled.header`
 `;
 
 const Text = styled.div`
-  color: ${props => props.theme.colors.white.base};
+  color: ${(props) => props.theme.colors.white.base};
   z-index: 0;
   position: absolute;
   top: 50%;
@@ -33,7 +33,7 @@ const Text = styled.div`
   flex-direction: column;
   text-align: center;
   width: 100%;
-  max-width: ${props => props.theme.layout.base};
+  max-width: ${(props) => props.theme.layout.base};
   padding: 0 2rem;
   margin-bottom: 3rem;
   align-items: center;
@@ -41,20 +41,22 @@ const Text = styled.div`
 
 const Subtitle = styled.p`
   max-width: 650px;
-  color: ${props => props.theme.colors.white.light};
+  color: ${(props) => props.theme.colors.white.light};
 `;
 
-const Header = ({ children, title, date, cover }) => (
-  <Wrapper>
-    <Img fluid={cover || {} || [] || ''} />
-    <Text>
-      <h1>{title}</h1>
-      <h3>{date}</h3>
+function Header({ children, title, date, cover }) {
+  return (
+    <Wrapper>
+      <Img fluid={cover || {} || [] || ''} />
+      <Text>
+        <h1>{title}</h1>
+        <h3>{date}</h3>
 
-      {children && <Subtitle>{children}</Subtitle>}
-    </Text>
-  </Wrapper>
-);
+        {children && <Subtitle>{children}</Subtitle>}
+      </Text>
+    </Wrapper>
+  );
+}
 
 export default Header;
 
@@ -65,13 +67,13 @@ Header.propTypes = {
   title: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
-    PropTypes.bool,
-  ]),
+    PropTypes.bool
+  ])
 };
 
 Header.defaultProps = {
   children: false,
   cover: false,
   date: false,
-  title: false,
+  title: false
 };
