@@ -1,11 +1,10 @@
 import React from 'react';
-import { graphql } from 'gatsby';
+import { graphql, PageProps } from 'gatsby';
 import Helmet from 'react-helmet';
-import PropTypes from 'prop-types';
 import { Header, BlogList } from '@components/index';
 import { Layout } from '@layouts/index';
 
-function Blog({ data }) {
+function Blog({ data }: PageProps<GatsbyTypes.BlogQuery>) {
   const { edges } = data.allMarkdownRemark;
   return (
     <Layout>
@@ -28,29 +27,8 @@ function Blog({ data }) {
 
 export default Blog;
 
-Blog.propTypes = {
-  data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
-      edges: PropTypes.arrayOf(
-        PropTypes.shape({
-          node: PropTypes.shape({
-            excerpt: PropTypes.string,
-            frontmatter: PropTypes.shape({
-              cover: PropTypes.object.isRequired,
-              path: PropTypes.string.isRequired,
-              title: PropTypes.string.isRequired,
-              date: PropTypes.string.isRequired,
-              tags: PropTypes.array
-            })
-          })
-        }).isRequired
-      )
-    })
-  })
-};
-
 export const query = graphql`
-  query {
+  query Blog {
     allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
       edges {
         node {
@@ -68,7 +46,15 @@ export const query = graphql`
                   quality: 90
                   traceSVG: { color: "#2B2B2F" }
                 ) {
-                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                  # @see https://github.com/JetBrains/js-graphql-intellij-plugin/issues/236
+                  # ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                  tracedSVG
+                  aspectRatio
+                  src
+                  srcSet
+                  srcWebp
+                  srcSetWebp
+                  sizes
                 }
               }
             }

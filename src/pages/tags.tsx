@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Layout, Container } from '@layouts/index';
 import { Header, TagsBlock } from '@components/index';
 
@@ -17,9 +16,3 @@ function Tags({ pageContext }) {
 }
 
 export default Tags;
-
-Tags.propTypes = {
-  pageContext: PropTypes.shape({
-    tags: PropTypes.array
-  })
-};

@@ -1,6 +1,5 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import PropTypes from 'prop-types';
 import { Header } from '@components/index';
 import { Layout, Container } from '@layouts/index';
 
@@ -21,7 +20,3 @@ function About(center) {
 }
 
 export default About;
-
-About.propTypes = {
-  center: PropTypes.object
-};

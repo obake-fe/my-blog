@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import Helmet from 'react-helmet';
-import PropTypes from 'prop-types';
 import { Header } from '@components/index';
 import { Layout, Container } from '@layouts/index';
 
@@ -22,7 +21,3 @@ function ErrorPage(center) {
 }
 
 export default ErrorPage;
-
-ErrorPage.propTypes = {
-  center: PropTypes.object
-};
