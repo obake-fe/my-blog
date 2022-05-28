@@ -3,6 +3,14 @@ import { MarkdownRemark } from './types/graphql-types';
 
 export type PageContext = {
   pageContext: {
+    posts?: {
+      frontmatter: {
+        path: string;
+        title: string;
+        tags: string[];
+      };
+    }[];
+    tagName?: string;
     tags?: string[];
     pathSlug?: string;
     prev?: MarkdownRemark | null;

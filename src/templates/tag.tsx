@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import styled from '@emotion/styled';
-import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { Layout, Container } from '@layouts/index';
 import { Header } from '@components/index';
-import config from '@config/site';
+import { site } from '@config/site';
+import { PageContext } from '../../gatsby-node';
 
 const StyledLink = styled(Link)`
   color: ${(props) => props.theme.colors.white.light};
@@ -26,33 +26,31 @@ const Information = styled.div`
   }
 `;
 
-function Tag({ pageContext }) {
+type Props = PageContext;
+
+const Tag: React.FC<Props> = ({ pageContext }) => {
   const { posts, tagName } = pageContext;
   const upperTag = tagName.charAt(0).toUpperCase() + tagName.slice(1);
   return (
     <Layout>
-      <Helmet title={`${tagName} | ${config.siteTitle}`} />
+      <Helmet title={`${tagName} | ${site.title}`} />
       <Header title={upperTag}>
         <StyledLink to="/tags">All Tags</StyledLink>
       </Header>
       <Container>
         <Information>
-          {posts.map((post, index) => (
-            <Link key={index} to={post.frontmatter.path}>
-              <h3>{post.frontmatter.title}</h3>
-            </Link>
-          ))}
+          {posts.map((post, index) => {
+            const key = `tag_${index}`;
+            return (
+              <Link key={key} to={post.frontmatter.path}>
+                <h3>{post.frontmatter.title}</h3>
+              </Link>
+            );
+          })}
         </Information>
       </Container>
     </Layout>
   );
-}
+};
 
 export default Tag;
-
-Tag.propTypes = {
-  pageContext: PropTypes.shape({
-    posts: PropTypes.array,
-    tagName: PropTypes.string
-  })
-};

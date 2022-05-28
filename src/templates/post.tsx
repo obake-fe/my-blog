@@ -1,10 +1,11 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
 import styled from '@emotion/styled';
-import PropTypes from 'prop-types';
 import { Layout, Container, Content } from '@layouts/index';
 import { TagsBlock, Header, SEO } from '@components/index';
 import '@styles/prism';
+import { TemplatesPostQuery } from '../../types/graphql-types';
+import { PageContext } from '../../gatsby-node';
 
 const SuggestionBar = styled.div`
   display: flex;
@@ -19,21 +20,19 @@ const PostSuggestion = styled.div`
   margin: 1rem 3rem 0 3rem;
 `;
 
-function Post({ data, pageContext }) {
+type Props = {
+  data: TemplatesPostQuery;
+} & PageContext;
+
+const Post = ({ data, pageContext }: Props) => {
   const { next, prev } = pageContext;
-  const { html, frontmatter, excerpt } = data.markdownRemark;
-  const { date, title, tags, path, description } = frontmatter;
+  const { html, frontmatter } = data.markdownRemark;
+  const { date, title, tags, path } = frontmatter;
   const image = frontmatter.cover.childImageSharp.fluid;
 
   return (
     <Layout>
-      <SEO
-        title={title}
-        description={description || excerpt || ' '}
-        banner={image}
-        pathname={path}
-        article
-      />
+      <SEO title={title} pathname={path} article />
       <Header title={title} date={date} cover={image} />
       <Container>
         <Content input={html} />
@@ -59,26 +58,19 @@ function Post({ data, pageContext }) {
       </SuggestionBar>
     </Layout>
   );
-}
+};
 
 export default Post;
 
-Post.propTypes = {
-  pageContext: PropTypes.shape({
-    prev: PropTypes.object,
-    next: PropTypes.object
-  }).isRequired,
-  data: PropTypes.object.isRequired
-};
-
 export const query = graphql`
-  query ($pathSlug: String!) {
+  query templatesPost($pathSlug: String!) {
     markdownRemark(frontmatter: { path: { eq: $pathSlug } }) {
       html
       frontmatter {
         date
         title
         tags
+        path
         cover {
           childImageSharp {
             fluid(
@@ -86,7 +78,15 @@ export const query = graphql`
               quality: 90
               duotone: { highlight: "#386eee", shadow: "#2323be", opacity: 60 }
             ) {
-              ...GatsbyImageSharpFluid_withWebp
+              # @see https://github.com/JetBrains/js-graphql-intellij-plugin/issues/236
+              # ...GatsbyImageSharpFluid_withWebp
+              base64
+              aspectRatio
+              src
+              srcSet
+              srcWebp
+              srcSetWebp
+              sizes
             }
             resize(width: 1200, quality: 90) {
               src

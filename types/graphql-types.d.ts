@@ -3582,7 +3582,7 @@ export type TemplatesPostQueryVariables = Exact<{
 }>;
 
 
-export type TemplatesPostQuery = { markdownRemark?: { html?: string | null, frontmatter?: { date?: any | null, title?: string | null, tags?: Array<string | null> | null, cover?: { childImageSharp?: { fluid?: { base64?: string | null, aspectRatio: number, src: string, srcSet: string, srcWebp?: string | null, srcSetWebp?: string | null, sizes: string } | null, resize?: { src?: string | null } | null } | null } | null } | null } | null };
+export type TemplatesPostQuery = { markdownRemark?: { html?: string | null, frontmatter?: { date?: any | null, title?: string | null, tags?: Array<string | null> | null, path?: string | null, cover?: { childImageSharp?: { fluid?: { base64?: string | null, aspectRatio: number, src: string, srcSet: string, srcWebp?: string | null, srcSetWebp?: string | null, sizes: string } | null, resize?: { src?: string | null } | null } | null } | null } | null } | null };
 
 export type GatsbyImageSharpFixedFragment = { base64?: string | null, width: number, height: number, src: string, srcSet: string };
 
