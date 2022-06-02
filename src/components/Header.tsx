@@ -1,14 +1,12 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import Img from 'gatsby-image';
-import PropTypes from 'prop-types';
+import { Props as TemplatesPostProps } from '@templates/post';
 
 const Wrapper = styled.header`
-  -webkit-clip-path: polygon(100% 0, 0 0, 0 70%, 50% 100%, 100% 70%);
   clip-path: polygon(100% 0, 0 0, 0 70%, 50% 100%, 100% 70%);
   @media (max-width: ${(props) => props.theme.breakpoints.s}) {
-    -webkit-clip-path: polygon(100% 0, 0 0, 0 90%, 50% 100%, 100% 90%);
-    clip-path: polygon(100% 0, 0 0, 0 90%, 50% 100%, 100% 90%);
+    clip-path: polygon(1s00% 0, 0 0, 0 90%, 50% 100%, 100% 90%);
   }
   background: ${(props) => props.theme.gradient.rightToLeft};
   height: 300px;
@@ -44,36 +42,35 @@ const Subtitle = styled.p`
   color: ${(props) => props.theme.colors.white.light};
 `;
 
-function Header({ children, title, date, cover }) {
-  return (
-    <Wrapper>
-      <Img fluid={cover || {} || [] || ''} />
-      <Text>
-        <h1>{title}</h1>
-        <h3>{date}</h3>
+type Props = {
+  children?: ReactNode | boolean;
+  title?:
+    | TemplatesPostProps['data']['markdownRemark']['frontmatter']['title']
+    | boolean;
+  date?:
+    | TemplatesPostProps['data']['markdownRemark']['frontmatter']['date']
+    | boolean;
+  cover?:
+    | TemplatesPostProps['data']['markdownRemark']['frontmatter']['cover']['childImageSharp']['fluid']
+    | false;
+};
 
-        {children && <Subtitle>{children}</Subtitle>}
-      </Text>
-    </Wrapper>
-  );
-}
+const Header = ({
+  children = false,
+  title = false,
+  date = false,
+  cover = false
+}: Props) => (
+  <Wrapper>
+    {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+    <Img fluid={cover || ({} as any) || [] || ''} />
+    <Text>
+      <h1>{title}</h1>
+      <h3>{date}</h3>
+
+      {children && <Subtitle>{children}</Subtitle>}
+    </Text>
+  </Wrapper>
+);
 
 export default Header;
-
-Header.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.node, PropTypes.bool]),
-  cover: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
-  date: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
-  title: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object,
-    PropTypes.bool
-  ])
-};
-
-Header.defaultProps = {
-  children: false,
-  cover: false,
-  date: false,
-  title: false
-};

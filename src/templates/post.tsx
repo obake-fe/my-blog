@@ -20,7 +20,7 @@ const PostSuggestion = styled.div`
   margin: 1rem 3rem 0 3rem;
 `;
 
-type Props = {
+export type Props = {
   data: TemplatesPostQuery;
 } & PageContext;
 

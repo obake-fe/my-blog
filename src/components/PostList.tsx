@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from '@emotion/styled';
-import PropTypes from 'prop-types';
 import theme from '@config/theme';
+import { Props as PagesIndexProps } from '@pages/index';
 
 const Wrapper = styled.article`
   margin-bottom: 2rem;
@@ -105,29 +105,30 @@ const Title = styled.h2`
   margin-bottom: 0.6rem;
 `;
 
-function PostList({ cover, path, date, title, excerpt }) {
-  return (
-    <Wrapper>
-      <Image>
-        <Img fluid={cover} />
-      </Image>
-      <StyledLink to={path}>
-        <Info>
-          <span>{date}</span>
-          <Title>{title}</Title>
-          <span>{excerpt}</span>
-        </Info>
-      </StyledLink>
-    </Wrapper>
-  );
-}
+type Node =
+  PagesIndexProps['data']['allMarkdownRemark']['edges'][number]['node'];
+
+type Props = {
+  cover: Node['frontmatter']['cover']['childImageSharp']['fluid'];
+  path: Node['frontmatter']['path'];
+  date: Node['frontmatter']['date'];
+  title: Node['frontmatter']['title'];
+  excerpt: Node['excerpt'];
+};
+
+const PostList = ({ cover, path, date, title, excerpt }: Props) => (
+  <Wrapper>
+    <Image>
+      <Img fluid={cover} />
+    </Image>
+    <StyledLink to={path}>
+      <Info>
+        <span>{date}</span>
+        <Title>{title}</Title>
+        <span>{excerpt}</span>
+      </Info>
+    </StyledLink>
+  </Wrapper>
+);
 
 export default PostList;
-
-PostList.propTypes = {
-  cover: PropTypes.object.isRequired,
-  path: PropTypes.string.isRequired,
-  excerpt: PropTypes.string,
-  date: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired
-};

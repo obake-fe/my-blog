@@ -20,7 +20,7 @@ const PostWrapper = styled.div`
   }
 `;
 
-type Props = {
+export type Props = {
   data: PagesIndexQuery;
 };
 

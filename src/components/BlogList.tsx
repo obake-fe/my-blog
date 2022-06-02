@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 import { TagsBlock } from '@components/index';
 import { Container } from '@layouts/index';
+import { Props as PagesBlogProps } from '@pages/blog';
 
 const Wrapper = styled.article`
   margin: 0 3rem;
@@ -86,35 +86,36 @@ const Title = styled.h1`
   margin: 0;
 `;
 
-function BlogList({ path, cover, title, date, excerpt, tags }) {
-  return (
-    <Container>
-      <Wrapper>
-        <Image>
-          <Link to={path} title={title}>
-            <Img fluid={cover} />
-          </Link>
-        </Image>
-        <Information>
-          <Date>{date}</Date>
-          <Link to={path}>
-            <Title>{title}</Title>
-          </Link>
-          <TagsBlock list={tags} />
-          {excerpt}
-        </Information>
-      </Wrapper>
-    </Container>
-  );
-}
+type Node =
+  PagesBlogProps['data']['allMarkdownRemark']['edges'][number]['node'];
+
+type Props = {
+  path: Node['frontmatter']['path'];
+  cover: Node['frontmatter']['cover']['childImageSharp']['fluid'];
+  title: Node['frontmatter']['title'];
+  date: Node['frontmatter']['date'];
+  excerpt: Node['excerpt'];
+  tags: Node['frontmatter']['tags'];
+};
+
+const BlogList = ({ path, cover, title, date, excerpt, tags }: Props) => (
+  <Container>
+    <Wrapper>
+      <Image>
+        <Link to={path} title={title}>
+          <Img fluid={cover} />
+        </Link>
+      </Image>
+      <Information>
+        <Date>{date}</Date>
+        <Link to={path}>
+          <Title>{title}</Title>
+        </Link>
+        <TagsBlock list={tags} />
+        {excerpt}
+      </Information>
+    </Wrapper>
+  </Container>
+);
 
 export default BlogList;
-
-BlogList.propTypes = {
-  cover: PropTypes.object.isRequired,
-  path: PropTypes.string.isRequired,
-  excerpt: PropTypes.string,
-  date: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  tags: PropTypes.array.isRequired
-};

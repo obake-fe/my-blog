@@ -5,7 +5,7 @@ import { Header, BlogList } from '@components/index';
 import { Layout } from '@layouts/index';
 import { PagesBlogQuery } from '../../types/graphql-types';
 
-type Props = {
+export type Props = {
   data: PagesBlogQuery;
 };
 
