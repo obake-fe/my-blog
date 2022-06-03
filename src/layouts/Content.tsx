@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import PropTypes from 'prop-types';
 import prism from '@styles/prism';
 import post from '@styles/post';
 
@@ -65,12 +64,12 @@ const Wrapper = styled.div`
   }
 `;
 
-function Content({ input }) {
-  return <Wrapper dangerouslySetInnerHTML={{ __html: input }} />;
-}
+type Props = {
+  input: string;
+};
+
+const Content = ({ input }: Props) => (
+  <Wrapper dangerouslySetInnerHTML={{ __html: input }} />
+);
 
 export default Content;
-
-Content.propTypes = {
-  input: PropTypes.any.isRequired
-};

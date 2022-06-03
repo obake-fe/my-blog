@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'gatsby';
 import styled from '@emotion/styled';
 import Headroom from 'react-headroom';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import logo from '@static/logo/header-logo.png';
 
 const StyledLink = styled(Link)`
@@ -27,19 +29,17 @@ const Nav = styled.nav`
   }
 `;
 
-function NavBar() {
-  return (
-    <Headroom calcHeightOnResize disableInlineStyles>
-      <StyledLink to="/">
-        <img src={logo} alt="Gatsby Logo" />
-      </StyledLink>
-      <Nav>
-        <Link to="/">Home</Link>
-        <Link to="/blog">Blog</Link>
-        <Link to="/about">About</Link>
-      </Nav>
-    </Headroom>
-  );
-}
+const NavBar = () => (
+  <Headroom calcHeightOnResize disableInlineStyles>
+    <StyledLink to="/">
+      <img src={logo} alt="Gatsby Logo" />
+    </StyledLink>
+    <Nav>
+      <Link to="/">Home</Link>
+      <Link to="/blog">Blog</Link>
+      <Link to="/about">About</Link>
+    </Nav>
+  </Headroom>
+);
 
 export default NavBar;
