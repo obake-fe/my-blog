@@ -88,6 +88,6 @@
     "emotion"
   ],
   "engines": {
-    "node": "16"
+    "node": "16.15.0"
   }
 }
