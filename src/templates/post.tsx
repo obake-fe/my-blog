@@ -84,8 +84,6 @@ export const query = graphql`
               aspectRatio
               src
               srcSet
-              srcWebp
-              srcSetWebp
               sizes
             }
             resize(width: 1200, quality: 90) {

@@ -18,7 +18,7 @@
       "@styles/*": ["./src/styles/*"],
       "@templates/*": ["./src/templates/*"],
       "@config/*": ["./config/*"],
-      "@static/*": ["./static/*"],
+      "@static/*": ["./static/*"]
     },
     "jsxImportSource": "@emotion/react",
     "allowSyntheticDefaultImports": true,

@@ -247,8 +247,6 @@ export type DirectoryCtimeArgs = {
 export type Site = Node & {
   buildTime?: Maybe<Scalars['Date']>;
   siteMetadata?: Maybe<SiteSiteMetadata>;
-  port?: Maybe<Scalars['Int']>;
-  host?: Maybe<Scalars['String']>;
   polyfill?: Maybe<Scalars['Boolean']>;
   pathPrefix?: Maybe<Scalars['String']>;
   jsxRuntime?: Maybe<Scalars['String']>;
@@ -806,8 +804,6 @@ export type QueryAllDirectoryArgs = {
 export type QuerySiteArgs = {
   buildTime?: InputMaybe<DateQueryOperatorInput>;
   siteMetadata?: InputMaybe<SiteSiteMetadataFilterInput>;
-  port?: InputMaybe<IntQueryOperatorInput>;
-  host?: InputMaybe<StringQueryOperatorInput>;
   polyfill?: InputMaybe<BooleanQueryOperatorInput>;
   pathPrefix?: InputMaybe<StringQueryOperatorInput>;
   jsxRuntime?: InputMaybe<StringQueryOperatorInput>;
@@ -2082,8 +2078,6 @@ export type SiteFieldsEnum =
   | 'siteMetadata___themeColor'
   | 'siteMetadata___backgroundColor'
   | 'siteMetadata___twitter'
-  | 'port'
-  | 'host'
   | 'polyfill'
   | 'pathPrefix'
   | 'jsxRuntime'
@@ -2219,8 +2213,6 @@ export type SiteGroupConnectionGroupArgs = {
 export type SiteFilterInput = {
   buildTime?: InputMaybe<DateQueryOperatorInput>;
   siteMetadata?: InputMaybe<SiteSiteMetadataFilterInput>;
-  port?: InputMaybe<IntQueryOperatorInput>;
-  host?: InputMaybe<StringQueryOperatorInput>;
   polyfill?: InputMaybe<BooleanQueryOperatorInput>;
   pathPrefix?: InputMaybe<StringQueryOperatorInput>;
   jsxRuntime?: InputMaybe<StringQueryOperatorInput>;
@@ -3570,19 +3562,19 @@ export type SeoQuery = { site?: { buildTime?: any | null, siteMetadata?: { title
 export type PagesBlogQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type PagesBlogQuery = { allMarkdownRemark: { edges: Array<{ node: { id: string, excerpt?: string | null, frontmatter?: { title?: string | null, path?: string | null, tags?: Array<string | null> | null, date?: any | null, cover?: { childImageSharp?: { fluid?: { tracedSVG?: string | null, aspectRatio: number, src: string, srcSet: string, srcWebp?: string | null, srcSetWebp?: string | null, sizes: string } | null } | null } | null } | null } }> } };
+export type PagesBlogQuery = { allMarkdownRemark: { edges: Array<{ node: { id: string, excerpt?: string | null, frontmatter?: { title?: string | null, path?: string | null, tags?: Array<string | null> | null, date?: any | null, cover?: { childImageSharp?: { fluid?: { tracedSVG?: string | null, aspectRatio: number, src: string, srcSet: string, sizes: string } | null } | null } | null } | null } }> } };
 
 export type PagesIndexQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type PagesIndexQuery = { allMarkdownRemark: { edges: Array<{ node: { id: string, excerpt?: string | null, frontmatter?: { title?: string | null, path?: string | null, tags?: Array<string | null> | null, date?: any | null, cover?: { childImageSharp?: { fluid?: { tracedSVG?: string | null, aspectRatio: number, src: string, srcSet: string, srcWebp?: string | null, srcSetWebp?: string | null, sizes: string } | null } | null } | null } | null } }> } };
+export type PagesIndexQuery = { allMarkdownRemark: { edges: Array<{ node: { id: string, excerpt?: string | null, frontmatter?: { title?: string | null, path?: string | null, tags?: Array<string | null> | null, date?: any | null, cover?: { childImageSharp?: { fluid?: { tracedSVG?: string | null, aspectRatio: number, src: string, srcSet: string, sizes: string } | null } | null } | null } | null } }> } };
 
 export type TemplatesPostQueryVariables = Exact<{
   pathSlug: Scalars['String'];
 }>;
 
 
-export type TemplatesPostQuery = { markdownRemark?: { html?: string | null, frontmatter?: { date?: any | null, title?: string | null, tags?: Array<string | null> | null, path?: string | null, cover?: { childImageSharp?: { fluid?: { base64?: string | null, aspectRatio: number, src: string, srcSet: string, srcWebp?: string | null, srcSetWebp?: string | null, sizes: string } | null, resize?: { src?: string | null } | null } | null } | null } | null } | null };
+export type TemplatesPostQuery = { markdownRemark?: { html?: string | null, frontmatter?: { date?: any | null, title?: string | null, tags?: Array<string | null> | null, path?: string | null, cover?: { childImageSharp?: { fluid?: { base64?: string | null, aspectRatio: number, src: string, srcSet: string, sizes: string } | null, resize?: { src?: string | null } | null } | null } | null } | null } | null };
 
 export type GatsbyImageSharpFixedFragment = { base64?: string | null, width: number, height: number, src: string, srcSet: string };
 
