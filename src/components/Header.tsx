@@ -50,20 +50,10 @@ type Props = {
   date?:
     | TemplatesPostProps['data']['markdownRemark']['frontmatter']['date']
     | boolean;
-  cover?:
-    | TemplatesPostProps['data']['markdownRemark']['frontmatter']['cover']['childImageSharp']['fluid']
-    | false;
 };
 
-const Header = ({
-  children = false,
-  title = false,
-  date = false,
-  cover = false
-}: Props) => (
+const Header = ({ children = false, title = false, date = false }: Props) => (
   <Wrapper>
-    {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-    <Img fluid={cover || ({} as any) || [] || ''} />
     <Text>
       <h1>{title}</h1>
       <h3>{date}</h3>

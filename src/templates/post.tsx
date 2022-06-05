@@ -28,12 +28,11 @@ const Post = ({ data, pageContext }: Props) => {
   const { next, prev } = pageContext;
   const { html, frontmatter } = data.markdownRemark;
   const { date, title, tags, path } = frontmatter;
-  const image = frontmatter.cover.childImageSharp.fluid;
 
   return (
     <Layout>
       <SEO title={title} pathname={path} article />
-      <Header title={title} date={date} cover={image} />
+      <Header title={title} date={date} />
       <Container>
         <Content input={html} />
         <TagsBlock list={tags || []} />
@@ -71,26 +70,6 @@ export const query = graphql`
         title
         tags
         path
-        cover {
-          childImageSharp {
-            fluid(
-              maxWidth: 1920
-              quality: 90
-              duotone: { highlight: "#386eee", shadow: "#2323be", opacity: 60 }
-            ) {
-              # @see https://github.com/JetBrains/js-graphql-intellij-plugin/issues/236
-              # ...GatsbyImageSharpFluid_withWebp
-              base64
-              aspectRatio
-              src
-              srcSet
-              sizes
-            }
-            resize(width: 1200, quality: 90) {
-              src
-            }
-          }
-        }
       }
     }
   }
