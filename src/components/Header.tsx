@@ -1,65 +1,63 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
-import Img from 'gatsby-image';
-import { Props as TemplatesPostProps } from '@templates/post';
+import { Link } from 'gatsby';
+import theme from '@config/theme';
 
 const Wrapper = styled.header`
-  clip-path: polygon(100% 0, 0 0, 0 70%, 50% 100%, 100% 70%);
-  @media (max-width: ${(props) => props.theme.breakpoints.s}) {
-    clip-path: polygon(1s00% 0, 0 0, 0 90%, 50% 100%, 100% 90%);
-  }
+  position: sticky;
+  top: 0;
+  z-index: 100;
   background: ${(props) => props.theme.gradient.rightToLeft};
-  height: 300px;
-  @media (max-width: ${(props) => props.theme.breakpoints.m}) {
-    height: 300px;
-  }
-  @media (max-width: ${(props) => props.theme.breakpoints.s}) {
-    height: 275px;
-  }
-  position: relative;
-  overflow: hidden;
+  height: 60px;
 `;
 
-const Text = styled.div`
-  color: ${(props) => props.theme.colors.white.base};
-  z-index: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+const Inner = styled.div`
   display: flex;
-  flex-direction: column;
-  text-align: center;
-  width: 100%;
-  max-width: ${(props) => props.theme.layout.base};
-  padding: 0 2rem;
-  margin-bottom: 3rem;
+  justify-content: space-between;
   align-items: center;
+  height: 100%;
+  color: ${(props) => props.theme.colors.white.base};
+  width: 100%;
+  padding: 0 4rem;
 `;
 
-const Subtitle = styled.p`
-  max-width: 650px;
-  color: ${(props) => props.theme.colors.white.light};
+const StyledLink = styled(Link)`
+  font-weight: 700;
+  color: ${theme.colors.white.base};
 `;
 
-type Props = {
-  children?: ReactNode | boolean;
-  title?:
-    | TemplatesPostProps['data']['markdownRemark']['frontmatter']['title']
-    | boolean;
-  date?:
-    | TemplatesPostProps['data']['markdownRemark']['frontmatter']['date']
-    | boolean;
-};
+const Title = styled.h1`
+  font-size: 2rem;
+  margin: 0;
+`;
 
-const Header = ({ children = false, title = false, date = false }: Props) => (
+const Nav = styled.nav`
+  display: flex;
+  justify-content: flex-end;
+  font-family: ${(props) => props.theme.fontFamily.body};
+  font-weight: 500;
+  font-size: 1.1rem;
+  align-items: center;
+  a {
+    color: ${(props) => props.theme.colors.white.base};
+    margin-left: 2rem;
+    transition: all ${(props) => props.theme.transitions.default.duration};
+    &:hover {
+      color: ${(props) => props.theme.colors.white.grey};
+    }
+  }
+`;
+
+const Header = () => (
   <Wrapper>
-    <Text>
-      <h1>{title}</h1>
-      <h3>{date}</h3>
-
-      {children && <Subtitle>{children}</Subtitle>}
-    </Text>
+    <Inner>
+      <Title>
+        <StyledLink to="/">Obake Engineer Blog</StyledLink>
+      </Title>
+      <Nav>
+        <Link to="/about">About</Link>
+      </Nav>
+    </Inner>
   </Wrapper>
 );
 

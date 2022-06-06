@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
-import { Header, BlogList } from '@components/index';
+import { BlogList } from '@components/index';
 import { Layout } from '@layouts/index';
 import { PagesBlogQuery } from '../../types/graphql-types';
 
@@ -14,7 +14,6 @@ const Blog: React.FC<Props> = ({ data }) => {
   return (
     <Layout>
       <Helmet title="Blog Page" />
-      <Header title="Blog Page">Gatsby Tutorial Starter</Header>
       {edges.map(({ node }) => (
         <BlogList
           key={node.id}

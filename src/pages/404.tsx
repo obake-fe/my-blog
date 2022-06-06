@@ -1,13 +1,11 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import Helmet from 'react-helmet';
-import { Header } from '@components/index';
 import { Layout, Container } from '@layouts/index';
 
 const ErrorPage: React.FC = (center) => (
   <Layout>
     <Helmet title="404" />
-    <Header title="404" />
     <Container center={center}>
       <h1>Woops, something went wrong.</h1>
       <h3>This page does not exist or is no longer reachable.</h3>

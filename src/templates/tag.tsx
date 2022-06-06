@@ -3,7 +3,6 @@ import { Link } from 'gatsby';
 import styled from '@emotion/styled';
 import Helmet from 'react-helmet';
 import { Layout, Container } from '@layouts/index';
-import { Header } from '@components/index';
 import { site } from '@config/site';
 import { PageContext } from '../../gatsby-node';
 
@@ -34,9 +33,7 @@ const Tag: React.FC<Props> = ({ pageContext }) => {
   return (
     <Layout>
       <Helmet title={`${tagName} | ${site.title}`} />
-      <Header title={upperTag}>
-        <StyledLink to="/tags">All Tags</StyledLink>
-      </Header>
+      <StyledLink to="/tags">All Tags</StyledLink>
       <Container>
         <Information>
           {posts.map((post, index) => {

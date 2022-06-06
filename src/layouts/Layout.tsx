@@ -2,8 +2,8 @@ import React, { ReactNode } from 'react';
 import { css, Global, ThemeProvider } from '@emotion/react';
 import 'typeface-open-sans';
 import 'typeface-candal';
-import { SEO } from '@components/index';
-import { NavBar, Footer } from '@layouts/index';
+import { Header, SEO } from '@components/index';
+import { Footer } from '@layouts/index';
 import theme from '@config/theme';
 import headroom from '@styles/headroom';
 
@@ -61,7 +61,7 @@ const Layout = ({ children }: Props) => (
         `}
       />
       <SEO />
-      <NavBar />
+      <Header />
       {children}
       <Footer />
     </>

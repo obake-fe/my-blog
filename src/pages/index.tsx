@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
 import styled from '@emotion/styled';
-import { Header, PostList } from '@components/index';
+import { PostList } from '@components/index';
 import { Layout } from '@layouts/index';
 import { PagesIndexQuery } from '../../types/graphql-types';
 
@@ -29,7 +29,6 @@ const Index: React.FC<Props> = ({ data }) => {
   return (
     <Layout>
       <Helmet title="Home Page" />
-      <Header title="Obake Engineer Blog">幽霊社員の備忘録です</Header>
       <PostWrapper>
         {edges.map(({ node }) => {
           const { id, excerpt, frontmatter } = node;

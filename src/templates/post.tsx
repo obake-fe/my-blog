@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql, Link } from 'gatsby';
 import styled from '@emotion/styled';
 import { Layout, Container, Content } from '@layouts/index';
-import { TagsBlock, Header, SEO } from '@components/index';
+import { TagsBlock, SEO } from '@components/index';
 import '@styles/prism';
 import { TemplatesPostQuery } from '../../types/graphql-types';
 import { PageContext } from '../../gatsby-node';
@@ -32,7 +32,6 @@ const Post = ({ data, pageContext }: Props) => {
   return (
     <Layout>
       <SEO title={title} pathname={path} article />
-      <Header title={title} date={date} />
       <Container>
         <Content input={html} />
         <TagsBlock list={tags || []} />
