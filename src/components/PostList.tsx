@@ -8,18 +8,16 @@ import { Props as PagesIndexProps } from '@pages/index';
 const Wrapper = styled.article`
   margin-bottom: 2rem;
   position: relative;
-  z-index: 100;
+  z-index: 10;
   border-radius: ${(props) => props.theme.borderRadius.default};
   box-shadow: ${(props) => props.theme.shadow.feature.small.default};
   transition: ${(props) => props.theme.transitions.boom.transition};
   height: 17rem;
-  flex-basis: calc(99.9% * 1 / 3 - 2.5rem);
-  max-width: calc(99.9% * 1 / 3 - 2.5rem);
-  width: calc(99.9% * 1 / 3 - 2.5rem);
+  max-width: 60rem;
+  width: 100%;
 
   &:hover {
     box-shadow: ${(props) => props.theme.shadow.feature.small.hover};
-    transform: scale(1.04);
   }
 
   @media (max-width: 1000px) {

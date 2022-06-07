@@ -2,10 +2,17 @@ import React, { ReactNode } from 'react';
 import { css, Global, ThemeProvider } from '@emotion/react';
 import 'typeface-open-sans';
 import 'typeface-candal';
-import { Header, SEO } from '@components/index';
+import { Aside, Header, SEO } from '@components/index';
 import { Footer } from '@layouts/index';
 import theme from '@config/theme';
 import headroom from '@styles/headroom';
+import styled from '@emotion/styled';
+
+const Wrapper = styled.main`
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+`;
 
 type Props = {
   children: ReactNode;
@@ -62,7 +69,10 @@ const Layout = ({ children }: Props) => (
       />
       <SEO />
       <Header />
-      {children}
+      <Wrapper>
+        {children}
+        <Aside />
+      </Wrapper>
       <Footer />
     </>
   </ThemeProvider>
