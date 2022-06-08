@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import styled from '@emotion/styled';
 
 const TagsContainer = styled.div`
-  margin: 1rem 0;
+  margin: 0;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

@@ -7,6 +7,23 @@ import '@styles/prism';
 import { TemplatesPostQuery } from '../../types/graphql-types';
 import { PageContext } from '../../gatsby-node';
 
+const PostTitle = styled.h2`
+  font-size: 4rem;
+`;
+
+const PostInfo = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin: 4rem 0;
+`;
+
+const PostDate = styled.p`
+  font-size: 1rem;
+  margin: 0;
+`;
+
 const SuggestionBar = styled.div`
   display: flex;
   flex-wrap: nowrap;
@@ -33,27 +50,31 @@ const Post = ({ data, pageContext }: Props) => {
     <Layout>
       <SEO title={title} pathname={path} article />
       <Container>
+        <PostTitle>{title}</PostTitle>
+        <PostInfo>
+          <TagsBlock list={tags || []} />
+          <PostDate>{date}</PostDate>
+        </PostInfo>
         <Content input={html} />
-        <TagsBlock list={tags || []} />
+        <SuggestionBar>
+          <PostSuggestion>
+            {prev && (
+              <Link to={prev.frontmatter.path}>
+                Previous
+                <h3>{prev.frontmatter.title}</h3>
+              </Link>
+            )}
+          </PostSuggestion>
+          <PostSuggestion>
+            {next && (
+              <Link to={next.frontmatter.path}>
+                Next
+                <h3>{next.frontmatter.title}</h3>
+              </Link>
+            )}
+          </PostSuggestion>
+        </SuggestionBar>
       </Container>
-      <SuggestionBar>
-        <PostSuggestion>
-          {prev && (
-            <Link to={prev.frontmatter.path}>
-              Previous
-              <h3>{prev.frontmatter.title}</h3>
-            </Link>
-          )}
-        </PostSuggestion>
-        <PostSuggestion>
-          {next && (
-            <Link to={next.frontmatter.path}>
-              Next
-              <h3>{next.frontmatter.title}</h3>
-            </Link>
-          )}
-        </PostSuggestion>
-      </SuggestionBar>
     </Layout>
   );
 };

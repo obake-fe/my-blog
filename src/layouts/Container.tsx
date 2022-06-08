@@ -10,10 +10,8 @@ type Props = {
 
 const Wrapper = styled.section<Props>`
   text-align: ${(props) => (props.center ? 'center' : '')};
-  margin: auto;
   padding: 3rem 1.5rem;
-  width: 60%;
-  max-width: ${(props) => props.theme.layout[props.type]};
+  max-width: 60rem;
   height: 100%;
   flex: 1;
 
