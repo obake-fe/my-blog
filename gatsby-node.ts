@@ -23,7 +23,6 @@ exports.createPages = ({ graphql, actions }) => {
 
   return new Promise((resolve, reject) => {
     const postTemplate = path.resolve('src/templates/post.tsx');
-    const tagPage = path.resolve('src/pages/tags.tsx');
     const tagPosts = path.resolve('src/templates/tag.tsx');
 
     resolve(
@@ -68,14 +67,6 @@ exports.createPages = ({ graphql, actions }) => {
         });
 
         const tags = Object.keys(postsByTag);
-
-        createPage({
-          path: '/tags',
-          component: tagPage,
-          context: {
-            tags: tags.sort()
-          }
-        });
 
         // create tags
         tags.forEach((tagName) => {
