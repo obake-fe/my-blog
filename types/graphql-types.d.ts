@@ -3565,7 +3565,7 @@ export type MarkdownRemarkSortInput = {
 export type AsideQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type AsideQuery = { allMarkdownRemark: { edges: Array<{ node: { frontmatter?: { tags?: Array<string | null> | null } | null } }> } };
+export type AsideQuery = { allMarkdownRemark: { edges: Array<{ node: { id: string, frontmatter?: { path?: string | null, title?: string | null, tags?: Array<string | null> | null } | null } }> } };
 
 export type SeoQueryVariables = Exact<{ [key: string]: never; }>;
 
