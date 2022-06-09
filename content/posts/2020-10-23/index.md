@@ -3,7 +3,7 @@ path: "/post-8"
 cover: "./blocks.jpg"
 date: "2020-10-23"
 title: "「create-react-app」+ 「TypeScript」環境で絶対パスのaliasを指定する"
-tags: ['JavaScript','React','TypeScript','webpack']
+tags: ['JavaScript','React','TypeScript','Webpack']
 published: true
 ---
 

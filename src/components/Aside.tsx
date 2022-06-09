@@ -2,7 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import theme from '@config/theme';
 import { graphql, Link, useStaticQuery } from 'gatsby';
-import { TagsBlock } from '@components/index';
+import AllTagsBlock from '@components/AllTagsBlock';
 import { AsideQuery } from '../../types/graphql-types';
 
 const Wrapper = styled.aside`
@@ -72,8 +72,6 @@ const Aside = () => {
     }
   });
 
-  const tags = Object.keys(postsByTag).sort();
-
   // 最近5件の投稿を表示
   const recentEdges = edges.slice(-5).reverse();
 
@@ -95,7 +93,7 @@ const Aside = () => {
       </Card>
       <Card>
         <Title>All Tags</Title>
-        <TagsBlock list={tags} />
+        <AllTagsBlock postsByTag={postsByTag} />
       </Card>
     </Wrapper>
   );
