@@ -4,10 +4,14 @@ import { MarkdownRemark } from './types/graphql-types';
 export type PageContext = {
   pageContext: {
     posts?: {
+      id: string;
+      excerpt: string;
       frontmatter: {
         path: string;
         title: string;
         tags: string[];
+        date: any;
+        cover: any;
       };
     }[];
     tagName?: string;
@@ -30,14 +34,34 @@ exports.createPages = ({ graphql, actions }) => {
         `
           query {
             allMarkdownRemark(
-              sort: { order: ASC, fields: [frontmatter___date] }
+              sort: { order: DESC, fields: [frontmatter___date] }
             ) {
               edges {
                 node {
+                  id
+                  excerpt(pruneLength: 75)
                   frontmatter {
                     path
                     title
                     tags
+                    date(formatString: "MM.DD.YYYY")
+                    cover {
+                      childImageSharp {
+                        fluid(
+                          maxWidth: 1000
+                          quality: 90
+                          traceSVG: { color: "#2B2B2F" }
+                        ) {
+                          tracedSVG
+                          aspectRatio
+                          src
+                          srcSet
+                          srcWebp
+                          srcSetWebp
+                          sizes
+                        }
+                      }
+                    }
                   }
                 }
               }
@@ -85,8 +109,8 @@ exports.createPages = ({ graphql, actions }) => {
         // create posts
         posts.forEach(({ node }, index) => {
           const pathSlug = node.frontmatter.path;
-          const prev = index === 0 ? null : posts[index - 1].node;
-          const next =
+          const next = index === 0 ? null : posts[index - 1].node;
+          const prev =
             index === posts.length - 1 ? null : posts[index + 1].node;
           createPage({
             path: pathSlug,

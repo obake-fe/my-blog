@@ -1,51 +1,54 @@
 import React from 'react';
-import { Link } from 'gatsby';
 import styled from '@emotion/styled';
 import Helmet from 'react-helmet';
-import { Layout, Container } from '@layouts/index';
+import { Layout } from '@layouts/index';
 import { site } from '@config/site';
+import { PostList } from '@components/index';
+import theme from '@config/theme';
 import { PageContext } from '../../gatsby-node';
 
-const StyledLink = styled(Link)`
-  color: ${(props) => props.theme.colors.white.light};
-  padding: 5px 10px;
-  border: solid 1px #fff;
-  border-radius: 20px;
-  &:hover {
-    color: ${(props) => props.theme.colors.black.blue};
-    background: ${(props) => props.theme.colors.white.light};
+const PostWrapper = styled.div`
+  width: 60rem;
+  @media (max-width: 1000px) {
+    margin: 4rem 2rem 1rem 2rem;
+  }
+  @media (max-width: 700px) {
+    margin: 4rem 1rem 1rem 1rem;
   }
 `;
 
-const Information = styled.div`
-  text-align: center;
-  h1 {
-    font-size: 2rem;
-    margin-bottom: 1.25rem;
-  }
+const TagTitle = styled.h2`
+  color: ${theme.colors.white.base};
 `;
 
 type Props = PageContext;
 
 const Tag: React.FC<Props> = ({ pageContext }) => {
   const { posts, tagName } = pageContext;
-  const upperTag = tagName.charAt(0).toUpperCase() + tagName.slice(1);
+
+  const sortedPosts = posts.sort(
+    (a, b) => a.frontmatter.date - b.frontmatter.date
+  );
   return (
     <Layout>
       <Helmet title={`${tagName} | ${site.title}`} />
-      <StyledLink to="/tags">All Tags</StyledLink>
-      <Container>
-        <Information>
-          {posts.map((post, index) => {
-            const key = `tag_${index}`;
-            return (
-              <Link key={key} to={post.frontmatter.path}>
-                <h3>{post.frontmatter.title}</h3>
-              </Link>
-            );
-          })}
-        </Information>
-      </Container>
+      <PostWrapper>
+        <TagTitle>{tagName}の記事一覧</TagTitle>
+        {sortedPosts.map((node) => {
+          const { id, excerpt, frontmatter } = node;
+          const { cover, path, title, date } = frontmatter;
+          return (
+            <PostList
+              key={id}
+              cover={cover.childImageSharp.fluid}
+              path={path}
+              title={title}
+              date={date}
+              excerpt={excerpt}
+            />
+          );
+        })}
+      </PostWrapper>
     </Layout>
   );
 };
