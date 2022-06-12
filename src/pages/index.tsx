@@ -32,13 +32,13 @@ const Index: React.FC<Props> = ({ data }) => {
       <PostWrapper>
         {edges.map(({ node }) => {
           const { id, excerpt, frontmatter } = node;
-          const { cover, path, title, date } = frontmatter;
+          const { path, title, tags, date } = frontmatter;
           return (
             <PostList
               key={id}
-              cover={cover.childImageSharp.fluid}
               path={path}
               title={title}
+              tags={tags}
               date={date}
               excerpt={excerpt}
             />
@@ -60,31 +60,31 @@ export const query = graphql`
       edges {
         node {
           id
-          excerpt(pruneLength: 75)
+          excerpt(pruneLength: 100)
           frontmatter {
             title
             path
             tags
             date(formatString: "MM.DD.YYYY")
-            cover {
-              childImageSharp {
-                fluid(
-                  maxWidth: 1000
-                  quality: 90
-                  traceSVG: { color: "#2B2B2F" }
-                ) {
-                  # @see https://github.com/JetBrains/js-graphql-intellij-plugin/issues/236
-                  # ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                  tracedSVG
-                  aspectRatio
-                  src
-                  srcSet
-                  srcWebp
-                  srcSetWebp
-                  sizes
-                }
-              }
-            }
+            #            cover {
+            #              childImageSharp {
+            #                fluid(
+            #                  maxWidth: 1000
+            #                  quality: 90
+            #                  traceSVG: { color: "#2B2B2F" }
+            #                ) {
+            #                  # @see https://github.com/JetBrains/js-graphql-intellij-plugin/issues/236
+            #                  # ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            #                  tracedSVG
+            #                  aspectRatio
+            #                  src
+            #                  srcSet
+            #                  srcWebp
+            #                  srcSetWebp
+            #                  sizes
+            #                }
+            #              }
+            #            }
           }
         }
       }

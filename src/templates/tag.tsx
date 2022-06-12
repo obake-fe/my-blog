@@ -36,13 +36,13 @@ const Tag: React.FC<Props> = ({ pageContext }) => {
         <TagTitle>{tagName}の記事一覧</TagTitle>
         {sortedPosts.map((node) => {
           const { id, excerpt, frontmatter } = node;
-          const { cover, path, title, date } = frontmatter;
+          const { path, title, tags, date } = frontmatter;
           return (
             <PostList
               key={id}
-              cover={cover.childImageSharp.fluid}
               path={path}
               title={title}
+              tags={tags}
               date={date}
               excerpt={excerpt}
             />

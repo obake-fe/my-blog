@@ -1,18 +1,17 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import Img from 'gatsby-image';
 import styled from '@emotion/styled';
-import theme from '@config/theme';
 import { Props as PagesIndexProps } from '@pages/index';
+import { TagsBlock } from '@components/index';
 
 const Wrapper = styled.article`
   margin-bottom: 2rem;
   position: relative;
   z-index: 10;
+  background-color: ${(props) => props.theme.colors.black.light};
   border-radius: ${(props) => props.theme.borderRadius.default};
   box-shadow: ${(props) => props.theme.shadow.feature.small.default};
-  transition: ${(props) => props.theme.transitions.boom.transition};
-  height: 17rem;
+  height: 18rem;
   max-width: 60rem;
   width: 100%;
 
@@ -35,97 +34,70 @@ const Wrapper = styled.article`
   }
 `;
 
-const StyledLink = styled(Link)`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+const SubWrapper = styled.div`
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  padding: 1rem;
-  z-index: 3;
-  border-radius: ${(props) => props.theme.borderRadius.default};
-  &:after {
-    content: '';
-    position: absolute;
-    display: block;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 0.3) 50%,
-      rgba(0, 0, 0, 0.7) 80%,
-      rgba(0, 0, 0, 0.8) 100%
-    );
-    z-index: -10;
-    border-radius: ${theme.borderRadius.default};
-    transition: opacity ${theme.transitions.default.duration};
-  }
+  align-items: end;
+  margin-bottom: 1rem;
 `;
 
-const Image = styled.div`
-  position: absolute;
-  top: 0;
-  overflow: hidden;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  z-index: 1;
-  object-fit: cover;
-  border-radius: ${(props) => props.theme.borderRadius.default};
-  img {
-    border-radius: ${(props) => props.theme.borderRadius.default};
-  }
-  > div {
-    position: static !important;
-  }
-  > div > div {
-    position: static !important;
-  }
+const StyledLink = styled(Link)`
+  margin-bottom: 1rem;
 `;
 
 const Info = styled.div`
+  height: 100%;
   color: ${(props) => props.theme.colors.white.light};
-  margin: 0 1rem 1.25rem 1.25rem;
-  position: absolute;
-  bottom: 0;
-  left: 0;
+  padding: 2rem;
 `;
 
 const Title = styled.h2`
-  margin-bottom: 0.6rem;
+  margin-bottom: 1.6rem;
+  color: ${(props) => props.theme.colors.white.light};
+  &:hover {
+    color: ${(props) => props.theme.colors.primary.dark};
+  }
+`;
+
+const ButtonLink = styled(Link)`
+  position: absolute;
+  right: 2rem;
+  bottom: 2rem;
+  color: ${(props) => props.theme.colors.black.blue};
+  background-color: ${(props) => props.theme.colors.white.grey};
+  border-radius: ${(props) => props.theme.borderRadius.default};
+  padding: 0.5rem;
+  &:hover {
+    color: ${(props) => props.theme.colors.white.light};
+    background: ${(props) => props.theme.colors.primary.light};
+    border: ${(props) => props.theme.colors.primary.light};
+  }
 `;
 
 type Node =
   PagesIndexProps['data']['allMarkdownRemark']['edges'][number]['node'];
 
 type Props = {
-  cover: Node['frontmatter']['cover']['childImageSharp']['fluid'];
   path: Node['frontmatter']['path'];
   date: Node['frontmatter']['date'];
   title: Node['frontmatter']['title'];
+  tags: Node['frontmatter']['tags'];
   excerpt: Node['excerpt'];
 };
 
-const PostList = ({ cover, path, date, title, excerpt }: Props) => (
+const PostList = ({ path, date, title, tags, excerpt }: Props) => (
   <Wrapper>
-    <Image>
-      <Img fluid={cover} />
-    </Image>
-    <StyledLink to={path}>
-      <Info>
-        <span>{date}</span>
+    <Info>
+      <StyledLink to={path}>
         <Title>{title}</Title>
-        <span>{excerpt}</span>
-      </Info>
-    </StyledLink>
+      </StyledLink>
+      <SubWrapper>
+        <TagsBlock list={tags} />
+        <div>{date}</div>
+      </SubWrapper>
+      <div>{excerpt}</div>
+      <ButtonLink to={path}>続きを読む</ButtonLink>
+    </Info>
   </Wrapper>
 );
 

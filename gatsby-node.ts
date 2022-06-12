@@ -45,23 +45,6 @@ exports.createPages = ({ graphql, actions }) => {
                     title
                     tags
                     date(formatString: "MM.DD.YYYY")
-                    cover {
-                      childImageSharp {
-                        fluid(
-                          maxWidth: 1000
-                          quality: 90
-                          traceSVG: { color: "#2B2B2F" }
-                        ) {
-                          tracedSVG
-                          aspectRatio
-                          src
-                          srcSet
-                          srcWebp
-                          srcSetWebp
-                          sizes
-                        }
-                      }
-                    }
                   }
                 }
               }

@@ -3572,15 +3572,10 @@ export type SeoQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type SeoQuery = { site?: { buildTime?: any | null, siteMetadata?: { titleAlt?: string | null, shortName?: string | null, author?: string | null, siteLanguage?: string | null, logo?: string | null, pathPrefix?: string | null, twitter?: string | null, defaultTitle?: string | null, siteUrl?: string | null, defaultDescription?: string | null, defaultBanner?: string | null } | null } | null };
 
-export type PagesBlogQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type PagesBlogQuery = { allMarkdownRemark: { edges: Array<{ node: { id: string, excerpt?: string | null, frontmatter?: { title?: string | null, path?: string | null, tags?: Array<string | null> | null, date?: any | null, cover?: { childImageSharp?: { fluid?: { tracedSVG?: string | null, aspectRatio: number, src: string, srcSet: string, srcWebp?: string | null, srcSetWebp?: string | null, sizes: string } | null } | null } | null } | null } }> } };
-
 export type PagesIndexQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type PagesIndexQuery = { allMarkdownRemark: { edges: Array<{ node: { id: string, excerpt?: string | null, frontmatter?: { title?: string | null, path?: string | null, tags?: Array<string | null> | null, date?: any | null, cover?: { childImageSharp?: { fluid?: { tracedSVG?: string | null, aspectRatio: number, src: string, srcSet: string, srcWebp?: string | null, srcSetWebp?: string | null, sizes: string } | null } | null } | null } | null } }> } };
+export type PagesIndexQuery = { allMarkdownRemark: { edges: Array<{ node: { id: string, excerpt?: string | null, frontmatter?: { title?: string | null, path?: string | null, tags?: Array<string | null> | null, date?: any | null } | null } }> } };
 
 export type TemplatesPostQueryVariables = Exact<{
   pathSlug: Scalars['String'];
