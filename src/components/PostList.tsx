@@ -8,7 +8,7 @@ const Wrapper = styled.article`
   margin-bottom: 2rem;
   position: relative;
   z-index: 10;
-  background-color: ${(props) => props.theme.colors.black.light};
+  background-color: ${(props) => props.theme.colors.black.blue};
   border-radius: ${(props) => props.theme.borderRadius.default};
   box-shadow: ${(props) => props.theme.shadow.feature.small.default};
   height: 18rem;
@@ -55,7 +55,7 @@ const Title = styled.h2`
   margin-bottom: 1.6rem;
   color: ${(props) => props.theme.colors.white.light};
   &:hover {
-    color: ${(props) => props.theme.colors.primary.dark};
+    color: ${(props) => props.theme.colors.primary.light};
   }
 `;
 

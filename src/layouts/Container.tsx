@@ -10,10 +10,12 @@ type Props = {
 
 const Wrapper = styled.section<Props>`
   text-align: ${(props) => (props.center ? 'center' : '')};
-  padding: 3rem 1.5rem;
+  padding: 3rem;
   max-width: 60rem;
   height: 100%;
   flex: 1;
+  background-color: ${(props) => props.theme.colors.black.blue};
+  border-radius: ${(props) => props.theme.borderRadius.default};
 
   @media (max-width: ${(props) => props.theme.breakpoints.m}) {
     width: 90%;

@@ -11,10 +11,11 @@ const Wrapper = styled.aside`
 `;
 
 const Card = styled.div`
+  text-align: center;
   padding: 2rem;
   margin-bottom: 2rem;
   color: ${theme.colors.white.base};
-  background-color: ${theme.colors.background.light};
+  background-color: ${(props) => props.theme.colors.black.blue};
   border-radius: ${theme.borderRadius.default};
 `;
 
@@ -23,6 +24,7 @@ const TitleList = styled.ul`
 `;
 
 const TitleItem = styled.li`
+  text-align: left;
   color: ${theme.colors.white.base};
 `;
 
@@ -31,9 +33,11 @@ const StyledLink = styled(Link)`
 `;
 
 const Title = styled.p`
+  display: inline-block;
   color: ${theme.colors.white.base};
   font-size: 2rem;
   text-align: center;
+  border-bottom: 4px ${theme.colors.primary.light} solid;
 `;
 
 const Aside = () => {
