@@ -33,19 +33,23 @@ exports.createPages = ({ graphql, actions }) => {
       graphql(
         `
           query {
-            allMarkdownRemark(
-              sort: { order: DESC, fields: [frontmatter___date] }
+            allContentfulBlogPost(
+              sort: { order: DESC, fields: [publishDate] }
             ) {
               edges {
                 node {
                   id
-                  excerpt(pruneLength: 75)
-                  frontmatter {
-                    path
+                  title
+                  slug
+                  tags {
                     title
-                    tags
-                    date(formatString: "MM.DD.YYYY")
                   }
+                  contents {
+                    childMarkdownRemark {
+                      excerpt(pruneLength: 75)
+                    }
+                  }
+                  publishDate(formatString: "MM.DD.YYYY")
                 }
               }
             }
@@ -57,18 +61,18 @@ exports.createPages = ({ graphql, actions }) => {
           return reject(result.errors);
         }
 
-        const posts = result.data.allMarkdownRemark.edges;
+        const posts = result.data.allContentfulBlogPost.edges;
 
         const postsByTag = {};
         // create tags page
         posts.forEach(({ node }) => {
-          if (node.frontmatter.tags) {
-            node.frontmatter.tags.forEach((tag) => {
-              if (!postsByTag[tag]) {
-                postsByTag[tag] = [];
+          if (node.tags) {
+            node.tags.forEach((tag) => {
+              if (!postsByTag[tag.title]) {
+                postsByTag[tag.title] = [];
               }
 
-              postsByTag[tag].push(node);
+              postsByTag[tag.title].push(node);
             });
           }
         });
@@ -91,7 +95,7 @@ exports.createPages = ({ graphql, actions }) => {
 
         // create posts
         posts.forEach(({ node }, index) => {
-          const pathSlug = node.frontmatter.path;
+          const pathSlug = node.slug;
           const next = index === 0 ? null : posts[index - 1].node;
           const prev =
             index === posts.length - 1 ? null : posts[index + 1].node;

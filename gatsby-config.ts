@@ -2,6 +2,10 @@ import type { GatsbyConfig } from 'gatsby';
 import { resolve } from 'path';
 import { site } from './config/site';
 
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`
+});
+
 const plugins: GatsbyConfig['plugins'] = [
   'gatsby-plugin-react-helmet',
   'gatsby-plugin-catch-links',
@@ -57,6 +61,7 @@ const plugins: GatsbyConfig['plugins'] = [
       pathToConfigModule: 'config/typography.ts'
     }
   },
+  'gatsby-plugin-image',
   'gatsby-plugin-sharp',
   'gatsby-plugin-sitemap',
   {
@@ -78,6 +83,14 @@ const plugins: GatsbyConfig['plugins'] = [
     resolve: 'gatsby-plugin-graphql-codegen',
     options: {
       fileName: 'types/graphql-types.d.ts'
+    }
+  },
+  'gatsby-plugin-offline',
+  {
+    resolve: 'gatsby-source-contentful',
+    options: {
+      spaceId: process.env.CONTENTFUL_SPACE_ID,
+      accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
     }
   }
 ];
