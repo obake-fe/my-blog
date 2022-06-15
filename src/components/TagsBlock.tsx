@@ -23,16 +23,16 @@ const TagsContainer = styled.div`
 `;
 
 type Props = {
-  list: string[];
+  list: { title?: string }[];
 };
 
 const TagsBlock: React.FC<Props> = ({ list }) => (
   <TagsContainer>
     {list &&
       list.map((tag) => {
-        const upperTag = tag.charAt(0).toUpperCase() + tag.slice(1);
+        const upperTag = tag.title.charAt(0).toUpperCase() + tag.title.slice(1);
         return (
-          <Link key={tag} to={`/tags/${tag}`}>
+          <Link key={tag.title} to={`/tags/${tag}`}>
             <span>{upperTag}</span>
           </Link>
         );

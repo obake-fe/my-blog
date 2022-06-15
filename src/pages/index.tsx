@@ -25,22 +25,21 @@ export type Props = {
 };
 
 const Index: React.FC<Props> = ({ data }) => {
-  const { edges } = data.allMarkdownRemark;
+  const { edges } = data.allContentfulBlogPost;
   return (
     <Layout>
       <Helmet title="Home Page" />
       <PostWrapper>
         {edges.map(({ node }) => {
-          const { id, excerpt, frontmatter } = node;
-          const { path, title, tags, date } = frontmatter;
+          const { id, title, slug, tags, publishDate, contents } = node;
           return (
             <PostList
               key={id}
-              path={path}
+              path={slug}
               title={title}
               tags={tags}
-              date={date}
-              excerpt={excerpt}
+              date={publishDate}
+              excerpt={contents.childMarkdownRemark.excerpt}
             />
           );
         })}
@@ -53,39 +52,24 @@ export default Index;
 
 export const query = graphql`
   query pagesIndex {
-    allMarkdownRemark(
+    allContentfulBlogPost(
       limit: 5
-      sort: { order: DESC, fields: [frontmatter___date] }
+      sort: { order: DESC, fields: [publishDate] }
     ) {
       edges {
         node {
           id
-          excerpt(pruneLength: 100)
-          frontmatter {
+          title
+          slug
+          tags {
             title
-            path
-            tags
-            date(formatString: "MM.DD.YYYY")
-            #            cover {
-            #              childImageSharp {
-            #                fluid(
-            #                  maxWidth: 1000
-            #                  quality: 90
-            #                  traceSVG: { color: "#2B2B2F" }
-            #                ) {
-            #                  # @see https://github.com/JetBrains/js-graphql-intellij-plugin/issues/236
-            #                  # ...GatsbyImageSharpFluid_withWebp_tracedSVG
-            #                  tracedSVG
-            #                  aspectRatio
-            #                  src
-            #                  srcSet
-            #                  srcWebp
-            #                  srcSetWebp
-            #                  sizes
-            #                }
-            #              }
-            #            }
           }
+          contents {
+            childMarkdownRemark {
+              excerpt(pruneLength: 75)
+            }
+          }
+          publishDate(formatString: "MM.DD.YYYY")
         }
       }
     }

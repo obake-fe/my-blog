@@ -26,25 +26,22 @@ type Props = PageContext;
 const Tag: React.FC<Props> = ({ pageContext }) => {
   const { posts, tagName } = pageContext;
 
-  const sortedPosts = posts.sort(
-    (a, b) => a.frontmatter.date - b.frontmatter.date
-  );
+  const sortedPosts = posts.sort((a, b) => a.publishDate - b.publishDate);
   return (
     <Layout>
       <Helmet title={`${tagName} | ${site.title}`} />
       <PostWrapper>
         <TagTitle>{tagName}の記事一覧</TagTitle>
         {sortedPosts.map((node) => {
-          const { id, excerpt, frontmatter } = node;
-          const { path, title, tags, date } = frontmatter;
+          const { id, slug, title, tags, publishDate, contents } = node;
           return (
             <PostList
               key={id}
-              path={path}
+              path={slug}
               title={title}
               tags={tags}
-              date={date}
-              excerpt={excerpt}
+              date={publishDate}
+              excerpt={contents.childMarkdownRemark.excerpt}
             />
           );
         })}

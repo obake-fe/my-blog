@@ -6148,7 +6148,7 @@ export type ContentfulContentTypeSortInput = {
 export type AsideQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type AsideQuery = { allMarkdownRemark: { edges: Array<{ node: { id: string, frontmatter?: { path?: string | null, title?: string | null, tags?: Array<string | null> | null } | null } }> } };
+export type AsideQuery = { allContentfulBlogPost: { edges: Array<{ node: { id: string, title?: string | null, slug?: string | null, tags?: Array<{ title?: string | null } | null> | null } }> } };
 
 export type SeoQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -6158,14 +6158,14 @@ export type SeoQuery = { site?: { buildTime?: any | null, siteMetadata?: { title
 export type PagesIndexQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type PagesIndexQuery = { allMarkdownRemark: { edges: Array<{ node: { id: string, excerpt?: string | null, frontmatter?: { title?: string | null, path?: string | null, tags?: Array<string | null> | null, date?: any | null } | null } }> } };
+export type PagesIndexQuery = { allContentfulBlogPost: { edges: Array<{ node: { id: string, title?: string | null, slug?: string | null, publishDate?: any | null, tags?: Array<{ title?: string | null } | null> | null, contents?: { childMarkdownRemark?: { excerpt?: string | null } | null } | null } }> } };
 
 export type TemplatesPostQueryVariables = Exact<{
   pathSlug: Scalars['String'];
 }>;
 
 
-export type TemplatesPostQuery = { markdownRemark?: { html?: string | null, frontmatter?: { date?: any | null, title?: string | null, tags?: Array<string | null> | null, path?: string | null } | null } | null };
+export type TemplatesPostQuery = { contentfulBlogPost?: { id: string, slug?: string | null, title?: string | null, publishDate?: any | null, tags?: Array<{ title?: string | null } | null> | null, contents?: { childMarkdownRemark?: { html?: string | null } | null } | null } | null };
 
 export type GatsbyImageSharpFixedFragment = { base64?: string | null, width: number, height: number, src: string, srcSet: string };
 

@@ -44,14 +44,14 @@ const Aside = () => {
   const data = useStaticQuery<AsideQuery>(
     graphql`
       query Aside {
-        allMarkdownRemark(sort: { order: ASC, fields: [frontmatter___date] }) {
+        allContentfulBlogPost(sort: { order: ASC, fields: [publishDate] }) {
           edges {
             node {
               id
-              frontmatter {
-                path
+              title
+              slug
+              tags {
                 title
-                tags
               }
             }
           }
@@ -60,18 +60,18 @@ const Aside = () => {
     `
   );
 
-  const { edges } = data.allMarkdownRemark;
+  const { edges } = data.allContentfulBlogPost;
 
   const postsByTag = {};
   // create tags
   edges.forEach(({ node }) => {
-    if (node.frontmatter.tags) {
-      node.frontmatter.tags.forEach((tag) => {
-        if (!postsByTag[tag]) {
-          postsByTag[tag] = [];
+    if (node.tags) {
+      node.tags.forEach((tag) => {
+        if (!postsByTag[tag.title]) {
+          postsByTag[tag.title] = [];
         }
 
-        postsByTag[tag].push(node);
+        postsByTag[tag.title].push(node);
       });
     }
   });
@@ -85,11 +85,10 @@ const Aside = () => {
         <Title>Recent Posts</Title>
         <TitleList>
           {recentEdges.map(({ node }) => {
-            const { id, frontmatter } = node;
-            const { path, title } = frontmatter;
+            const { id, slug, title } = node;
             return (
               <TitleItem key={id}>
-                <StyledLink to={path}>{title}</StyledLink>
+                <StyledLink to={slug}>{title}</StyledLink>
               </TitleItem>
             );
           })}

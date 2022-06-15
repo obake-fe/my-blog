@@ -75,14 +75,14 @@ const ButtonLink = styled(Link)`
 `;
 
 type Node =
-  PagesIndexProps['data']['allMarkdownRemark']['edges'][number]['node'];
+  PagesIndexProps['data']['allContentfulBlogPost']['edges'][number]['node'];
 
 type Props = {
-  path: Node['frontmatter']['path'];
-  date: Node['frontmatter']['date'];
-  title: Node['frontmatter']['title'];
-  tags: Node['frontmatter']['tags'];
-  excerpt: Node['excerpt'];
+  path: Node['slug'];
+  date: Node['publishDate'];
+  title: Node['title'];
+  tags: Node['tags'];
+  excerpt: Node['contents']['childMarkdownRemark']['excerpt'];
 };
 
 const PostList = ({ path, date, title, tags, excerpt }: Props) => (

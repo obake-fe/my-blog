@@ -43,33 +43,32 @@ export type Props = {
 
 const Post = ({ data, pageContext }: Props) => {
   const { next, prev } = pageContext;
-  const { html, frontmatter } = data.markdownRemark;
-  const { date, title, tags, path } = frontmatter;
+  const { slug, title, tags, publishDate, contents } = data.contentfulBlogPost;
 
   return (
     <Layout>
-      <SEO title={title} pathname={path} article />
+      <SEO title={title} pathname={slug} article />
       <Container>
         <PostTitle>{title}</PostTitle>
         <PostInfo>
           <TagsBlock list={tags || []} />
-          <PostDate>{date}</PostDate>
+          <PostDate>{publishDate}</PostDate>
         </PostInfo>
-        <Content input={html} />
+        <Content input={contents.childMarkdownRemark.html} />
         <SuggestionBar>
           <PostSuggestion>
             {prev && (
-              <Link to={prev.frontmatter.path}>
+              <Link to={prev.slug}>
                 Previous
-                <h3>{prev.frontmatter.title}</h3>
+                <h3>{prev.title}</h3>
               </Link>
             )}
           </PostSuggestion>
           <PostSuggestion>
             {next && (
-              <Link to={next.frontmatter.path}>
+              <Link to={next.slug}>
                 Next
-                <h3>{next.frontmatter.title}</h3>
+                <h3>{next.title}</h3>
               </Link>
             )}
           </PostSuggestion>
@@ -83,13 +82,18 @@ export default Post;
 
 export const query = graphql`
   query templatesPost($pathSlug: String!) {
-    markdownRemark(frontmatter: { path: { eq: $pathSlug } }) {
-      html
-      frontmatter {
-        date
+    contentfulBlogPost(slug: { eq: $pathSlug }) {
+      id
+      slug
+      title
+      tags {
         title
-        tags
-        path
+      }
+      publishDate
+      contents {
+        childMarkdownRemark {
+          html
+        }
       }
     }
   }

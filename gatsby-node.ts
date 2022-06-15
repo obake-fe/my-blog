@@ -1,24 +1,14 @@
 import path from 'path';
-import { MarkdownRemark } from './types/graphql-types';
+import { ContentfulBlogPost } from './types/graphql-types';
 
 export type PageContext = {
   pageContext: {
-    posts?: {
-      id: string;
-      excerpt: string;
-      frontmatter: {
-        path: string;
-        title: string;
-        tags: string[];
-        date: any;
-        cover: any;
-      };
-    }[];
+    posts?: ContentfulBlogPost[];
     tagName?: string;
     tags?: string[];
     pathSlug?: string;
-    prev?: MarkdownRemark | null;
-    next?: MarkdownRemark | null;
+    prev?: ContentfulBlogPost | null;
+    next?: ContentfulBlogPost | null;
   };
 };
 
