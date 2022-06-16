@@ -32,7 +32,7 @@ const TagsBlock: React.FC<Props> = ({ list }) => (
       list.map((tag) => {
         const upperTag = tag.title.charAt(0).toUpperCase() + tag.title.slice(1);
         return (
-          <Link key={tag.title} to={`/tags/${tag}`}>
+          <Link key={tag.title} to={`/tags/${tag.title}`}>
             <span>{upperTag}</span>
           </Link>
         );

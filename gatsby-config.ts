@@ -1,5 +1,4 @@
 import type { GatsbyConfig } from 'gatsby';
-import { resolve } from 'path';
 import { site } from './config/site';
 
 require('dotenv').config({
@@ -9,13 +8,6 @@ require('dotenv').config({
 const plugins: GatsbyConfig['plugins'] = [
   'gatsby-plugin-react-helmet',
   'gatsby-plugin-catch-links',
-  {
-    resolve: 'gatsby-source-filesystem',
-    options: {
-      name: 'posts',
-      path: resolve(__dirname, 'content/posts')
-    }
-  },
   'gatsby-transformer-sharp',
   {
     resolve: 'gatsby-transformer-remark',
