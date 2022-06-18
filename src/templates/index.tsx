@@ -1,10 +1,11 @@
 import React from 'react';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import Helmet from 'react-helmet';
 import styled from '@emotion/styled';
 import { PostList } from '@components/index';
 import { Layout } from '@layouts/index';
 import { PagesIndexQuery } from '../../types/graphql-types';
+import { PageContext } from '../../gatsby-node';
 
 const PostWrapper = styled.div`
   width: 60rem;
@@ -20,12 +21,36 @@ const PostWrapper = styled.div`
   }
 `;
 
+const PaginationWrapper = styled.ul`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  list-style: none;
+  margin: 0;
+`;
+
+const PaginationList = styled.li``;
+
+const StyledLink = styled(Link)`
+  background: ${(props) => props.theme.colors.white.grey};
+  display: inline-block;
+  padding: 1rem;
+  color: ${(props) => props.theme.colors.black.blue};
+  border-radius: 10px;
+  &:hover {
+    color: ${(props) => props.theme.colors.white.light};
+    background: ${(props) => props.theme.colors.primary.light};
+    border: ${(props) => props.theme.colors.primary.light};
+  }
+`;
+
 export type Props = {
   data: PagesIndexQuery;
-};
+} & PageContext;
 
-const Index: React.FC<Props> = ({ data }) => {
+const Index: React.FC<Props> = ({ data, pageContext }) => {
   const { edges } = data.allContentfulBlogPost;
+  const { currentPage, isFirst, isLast } = pageContext;
   return (
     <Layout>
       <Helmet title="Home Page" />
@@ -43,6 +68,24 @@ const Index: React.FC<Props> = ({ data }) => {
             />
           );
         })}
+        <PaginationWrapper>
+          <PaginationList>
+            {!isFirst && (
+              <StyledLink
+                to={currentPage === 2 ? '/' : `/page-${currentPage - 1}/`}
+              >
+                <span>前のページ</span>
+              </StyledLink>
+            )}
+          </PaginationList>
+          <PaginationList>
+            {!isLast && (
+              <StyledLink to={`/page-${currentPage + 1}/`}>
+                <span>次のページ</span>
+              </StyledLink>
+            )}
+          </PaginationList>
+        </PaginationWrapper>
       </PostWrapper>
     </Layout>
   );
@@ -51,10 +94,11 @@ const Index: React.FC<Props> = ({ data }) => {
 export default Index;
 
 export const query = graphql`
-  query pagesIndex {
+  query pagesIndex($skip: Int!, $limit: Int!) {
     allContentfulBlogPost(
-      limit: 5
       sort: { order: DESC, fields: [publishDate] }
+      skip: $skip
+      limit: $limit
     ) {
       edges {
         node {

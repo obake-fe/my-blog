@@ -9,6 +9,11 @@ export type PageContext = {
     pathSlug?: string;
     prev?: ContentfulBlogPost | null;
     next?: ContentfulBlogPost | null;
+    skip?: number;
+    limit?: number;
+    currentPage?: number;
+    isFirst?: boolean;
+    isLast?: boolean;
   };
 };
 
@@ -18,6 +23,7 @@ exports.createPages = ({ graphql, actions }) => {
   return new Promise((resolve, reject) => {
     const postTemplate = path.resolve('src/templates/post.tsx');
     const tagPosts = path.resolve('src/templates/tag.tsx');
+    const postIndex = path.resolve('src/templates/index.tsx');
 
     resolve(
       graphql(
@@ -52,6 +58,25 @@ exports.createPages = ({ graphql, actions }) => {
         }
 
         const posts = result.data.allContentfulBlogPost.edges;
+
+        // create Index page
+        const blogPostPerPage = 6;
+        const blogPosts = posts.length;
+        const blogPages = Math.ceil(blogPosts / blogPostPerPage);
+
+        Array.from({ length: blogPages }).forEach((_, i) => {
+          createPage({
+            path: i === 0 ? '/' : `/page-${i + 1}`,
+            component: postIndex,
+            context: {
+              skip: blogPostPerPage * i,
+              limit: blogPostPerPage,
+              currentPage: i + 1,
+              isFirst: i + 1 === 1,
+              isLast: i + 1 === blogPages
+            }
+          });
+        });
 
         const postsByTag = {};
         // create tags page

@@ -5715,7 +5715,10 @@ export type SeoQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type SeoQuery = { site?: { buildTime?: any | null, siteMetadata?: { titleAlt?: string | null, shortName?: string | null, author?: string | null, siteLanguage?: string | null, logo?: string | null, pathPrefix?: string | null, twitter?: string | null, defaultTitle?: string | null, siteUrl?: string | null, defaultDescription?: string | null, defaultBanner?: string | null } | null } | null };
 
-export type PagesIndexQueryVariables = Exact<{ [key: string]: never; }>;
+export type PagesIndexQueryVariables = Exact<{
+  skip: Scalars['Int'];
+  limit: Scalars['Int'];
+}>;
 
 
 export type PagesIndexQuery = { allContentfulBlogPost: { edges: Array<{ node: { id: string, title?: string | null, slug?: string | null, publishDate?: any | null, tags?: Array<{ title?: string | null } | null> | null, contents?: { childMarkdownRemark?: { excerpt?: string | null } | null } | null } }> } };

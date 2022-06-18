@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import styled from '@emotion/styled';
-import { Props as PagesIndexProps } from '@pages/index';
+import { Props as PagesIndexProps } from '@templates/index';
 import { TagsBlock } from '@components/index';
 
 const Wrapper = styled.article`
