@@ -1,8 +1,8 @@
 import React from 'react';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
 import styled from '@emotion/styled';
-import { PostList } from '@components/index';
+import { Pagination, PostList } from '@components/index';
 import { Layout } from '@layouts/index';
 import { PagesIndexQuery } from '../../types/graphql-types';
 import { PageContext } from '../../gatsby-node';
@@ -18,29 +18,6 @@ const PostWrapper = styled.div`
   }
   @media (max-width: 700px) {
     margin: 4rem 1rem 1rem 1rem;
-  }
-`;
-
-const PaginationWrapper = styled.ul`
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  list-style: none;
-  margin: 0;
-`;
-
-const PaginationList = styled.li``;
-
-const StyledLink = styled(Link)`
-  background: ${(props) => props.theme.colors.white.grey};
-  display: inline-block;
-  padding: 1rem;
-  color: ${(props) => props.theme.colors.black.blue};
-  border-radius: 10px;
-  &:hover {
-    color: ${(props) => props.theme.colors.white.light};
-    background: ${(props) => props.theme.colors.primary.light};
-    border: ${(props) => props.theme.colors.primary.light};
   }
 `;
 
@@ -68,24 +45,12 @@ const Index: React.FC<Props> = ({ data, pageContext }) => {
             />
           );
         })}
-        <PaginationWrapper>
-          <PaginationList>
-            {!isFirst && (
-              <StyledLink
-                to={currentPage === 2 ? '/' : `/page-${currentPage - 1}/`}
-              >
-                <span>前のページ</span>
-              </StyledLink>
-            )}
-          </PaginationList>
-          <PaginationList>
-            {!isLast && (
-              <StyledLink to={`/page-${currentPage + 1}/`}>
-                <span>次のページ</span>
-              </StyledLink>
-            )}
-          </PaginationList>
-        </PaginationWrapper>
+        <Pagination
+          path="/"
+          currentPage={currentPage}
+          isFirst={isFirst}
+          isLast={isLast}
+        />
       </PostWrapper>
     </Layout>
   );

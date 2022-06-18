@@ -98,13 +98,27 @@ exports.createPages = ({ graphql, actions }) => {
         tags.forEach((tagName) => {
           const postsTag = postsByTag[tagName];
 
-          createPage({
-            path: `/tags/${tagName}`,
-            component: tagPosts,
-            context: {
-              posts: postsTag,
-              tagName
-            }
+          const blogTagPostPerPage = 6;
+          const blogTagPosts = postsTag.length;
+          const blogTagPages = Math.ceil(blogTagPosts / blogTagPostPerPage);
+
+          const sortedPosts = postsTag.sort(
+            (a, b) => a.publishDate - b.publishDate
+          );
+
+          Array.from({ length: blogTagPages }).forEach((_, i) => {
+            createPage({
+              path:
+                i === 0 ? `/tags/${tagName}` : `/tags/${tagName}/page-${i + 1}`,
+              component: tagPosts,
+              context: {
+                posts: sortedPosts.slice(i * 6, i * 6 + blogPostPerPage - 1),
+                tagName,
+                currentPage: i + 1,
+                isFirst: i === 0,
+                isLast: i + 1 === blogTagPages
+              }
+            });
           });
         });
 

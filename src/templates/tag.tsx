@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import Helmet from 'react-helmet';
 import { Layout } from '@layouts/index';
 import { site } from '@config/site';
-import { PostList } from '@components/index';
+import { Pagination, PostList } from '@components/index';
 import theme from '@config/theme';
 import { PageContext } from '../../gatsby-node';
 
@@ -24,15 +24,14 @@ const TagTitle = styled.h2`
 type Props = PageContext;
 
 const Tag: React.FC<Props> = ({ pageContext }) => {
-  const { posts, tagName } = pageContext;
+  const { posts, tagName, currentPage, isFirst, isLast } = pageContext;
 
-  const sortedPosts = posts.sort((a, b) => a.publishDate - b.publishDate);
   return (
     <Layout>
       <Helmet title={`${tagName} | ${site.title}`} />
       <PostWrapper>
         <TagTitle>{tagName}の記事一覧</TagTitle>
-        {sortedPosts.map((node) => {
+        {posts.map((node) => {
           const { id, slug, title, tags, publishDate, contents } = node;
           return (
             <PostList
@@ -45,6 +44,12 @@ const Tag: React.FC<Props> = ({ pageContext }) => {
             />
           );
         })}
+        <Pagination
+          path={`/tags/${tagName}/`}
+          currentPage={currentPage}
+          isFirst={isFirst}
+          isLast={isLast}
+        />
       </PostWrapper>
     </Layout>
   );
