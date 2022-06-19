@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import { Layout, Container, Content } from '@layouts/index';
 import { TagsBlock, SEO } from '@components/index';
 import '@styles/prism';
+import theme from '@config/theme';
 import { TemplatesPostQuery } from '../../types/graphql-types';
 import { PageContext } from '../../gatsby-node';
 
@@ -24,17 +25,25 @@ const PostDate = styled.p`
   margin: 0;
 `;
 
-const SuggestionBar = styled.div`
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  background: ${(props) => props.theme.colors.white.light};
-  box-shadow: ${(props) => props.theme.shadow.suggestion};
+const Title = styled.p`
+  display: inline-block;
+  color: ${theme.colors.white.base};
+  font-size: 2rem;
+  text-align: center;
+  border-bottom: 4px ${theme.colors.primary.light} solid;
 `;
-const PostSuggestion = styled.div`
-  display: flex;
-  align-items: center;
-  margin: 1rem 3rem 0 3rem;
+
+const TitleList = styled.ul`
+  font-size: 1rem;
+`;
+
+const TitleItem = styled.li`
+  text-align: left;
+  color: ${theme.colors.white.base};
+`;
+
+const StyledLink = styled(Link)`
+  color: ${theme.colors.white.base};
 `;
 
 export type Props = {
@@ -42,38 +51,34 @@ export type Props = {
 } & PageContext;
 
 const Post = ({ data, pageContext }: Props) => {
-  const { next, prev } = pageContext;
+  const { relatedPosts } = pageContext;
   const { slug, title, tags, publishDate, contents } = data.contentfulBlogPost;
 
   return (
     <Layout>
       <SEO title={title} pathname={slug} article />
-      <Container>
-        <PostTitle>{title}</PostTitle>
-        <PostInfo>
-          <TagsBlock list={tags || []} />
-          <PostDate>{publishDate}</PostDate>
-        </PostInfo>
-        <Content input={contents.childMarkdownRemark.html} />
-        <SuggestionBar>
-          <PostSuggestion>
-            {prev && (
-              <Link to={prev.slug}>
-                Previous
-                <h3>{prev.title}</h3>
-              </Link>
-            )}
-          </PostSuggestion>
-          <PostSuggestion>
-            {next && (
-              <Link to={next.slug}>
-                Next
-                <h3>{next.title}</h3>
-              </Link>
-            )}
-          </PostSuggestion>
-        </SuggestionBar>
-      </Container>
+      <div>
+        <Container>
+          <PostTitle>{title}</PostTitle>
+          <PostInfo>
+            <TagsBlock list={tags || []} />
+            <PostDate>{publishDate}</PostDate>
+          </PostInfo>
+          <Content input={contents.childMarkdownRemark.html} />
+        </Container>
+        {relatedPosts.length > 0 && (
+          <Container>
+            <Title>Related Posts</Title>
+            <TitleList>
+              {relatedPosts.slice(0, 4).map(({ node }) => (
+                <TitleItem key={`related_${node.id}`}>
+                  <StyledLink to={node.slug}>{node.title}</StyledLink>
+                </TitleItem>
+              ))}
+            </TitleList>
+          </Container>
+        )}
+      </div>
     </Layout>
   );
 };

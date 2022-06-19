@@ -1,5 +1,9 @@
 import path from 'path';
-import { ContentfulBlogPost } from './types/graphql-types';
+import { GatsbyNode } from 'gatsby';
+import {
+  ContentfulBlogPost,
+  ContentfulBlogPostConnection
+} from './types/graphql-types';
 
 export type PageContext = {
   pageContext: {
@@ -7,13 +11,12 @@ export type PageContext = {
     tagName?: string;
     tags?: string[];
     pathSlug?: string;
-    prev?: ContentfulBlogPost | null;
-    next?: ContentfulBlogPost | null;
     skip?: number;
     limit?: number;
     currentPage?: number;
     isFirst?: boolean;
     isLast?: boolean;
+    relatedPosts?: ContentfulBlogPostConnection['edges'] | [];
   };
 };
 
@@ -123,18 +126,38 @@ exports.createPages = ({ graphql, actions }) => {
         });
 
         // create posts
-        posts.forEach(({ node }, index) => {
+        posts.forEach(({ node }) => {
           const pathSlug = node.slug;
-          const next = index === 0 ? null : posts[index - 1].node;
-          const prev =
-            index === posts.length - 1 ? null : posts[index + 1].node;
+
+          const relatedPosts = [];
+
+          node.tags.forEach((tag) => {
+            posts.forEach((post) => {
+              // 記事ページと同じ記事を省く
+              if (node.id === post.node.id) return;
+              post.node.tags.forEach((item) => {
+                if (item.title === tag.title) {
+                  // すでに関連記事にpushしている記事を省く
+                  if (
+                    relatedPosts.findIndex(
+                      (relatedPost) => relatedPost.node.id === post.node.id
+                    ) !== -1
+                  ) {
+                    return;
+                  }
+
+                  relatedPosts.push(post);
+                }
+              });
+            });
+          });
+
           createPage({
             path: pathSlug,
             component: postTemplate,
             context: {
               pathSlug,
-              prev,
-              next
+              relatedPosts
             }
           });
         });
