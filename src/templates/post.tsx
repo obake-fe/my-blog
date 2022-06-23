@@ -6,7 +6,7 @@ import { TagsBlock, SEO } from '@components/index';
 import '@styles/prism';
 import theme from '@config/theme';
 import { TemplatesPostQuery } from '../../types/graphql-types';
-import { PageContext } from '../../gatsby-node';
+import { PostPageContext } from '../../gatsby-node';
 
 const PostTitle = styled.h2`
   font-size: 4rem;
@@ -48,7 +48,7 @@ const StyledLink = styled(Link)`
 
 export type Props = {
   data: TemplatesPostQuery;
-} & PageContext;
+} & PostPageContext;
 
 const Post = ({ data, pageContext }: Props) => {
   const { relatedPosts } = pageContext;

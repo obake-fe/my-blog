@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 import { Pagination, PostList } from '@components/index';
 import { Layout } from '@layouts/index';
 import { PagesIndexQuery } from '../../types/graphql-types';
-import { PageContext } from '../../gatsby-node';
+import { IndexPageContext } from '../../gatsby-node';
 
 const PostWrapper = styled.div`
   width: 60rem;
@@ -23,7 +23,7 @@ const PostWrapper = styled.div`
 
 export type Props = {
   data: PagesIndexQuery;
-} & PageContext;
+} & IndexPageContext;
 
 const Index: React.FC<Props> = ({ data, pageContext }) => {
   const { edges } = data.allContentfulBlogPost;
