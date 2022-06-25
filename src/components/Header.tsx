@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
-import theme from '@config/theme';
 
 const Wrapper = styled.header`
   position: sticky;
@@ -23,7 +22,7 @@ const Inner = styled.div`
 
 const StyledLink = styled(Link)`
   font-weight: 700;
-  color: ${theme.colors.white.base};
+  color: ${(props) => props.theme.colors.white.base};
 `;
 
 const Title = styled.h1`

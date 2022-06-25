@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
-import { PageContext } from '../../gatsby-node';
+import { IndexPageContext } from '../../gatsby-node';
 
 const PaginationWrapper = styled.ul`
   display: flex;
@@ -28,9 +28,9 @@ const StyledLink = styled(Link)`
 
 type Props = {
   path: string;
-  currentPage: PageContext['pageContext']['currentPage'];
-  isFirst: PageContext['pageContext']['isFirst'];
-  isLast: PageContext['pageContext']['isLast'];
+  currentPage: IndexPageContext['pageContext']['currentPage'];
+  isFirst: IndexPageContext['pageContext']['isFirst'];
+  isLast: IndexPageContext['pageContext']['isLast'];
 };
 
 const Pagination = ({ path, currentPage, isFirst, isLast }: Props) => (

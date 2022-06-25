@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import theme from '@config/theme';
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import AllTagsBlock from '@components/AllTagsBlock';
 import { AsideQuery } from '../../types/graphql-types';
@@ -14,9 +13,9 @@ const Card = styled.div`
   text-align: center;
   padding: 2rem;
   margin-bottom: 2rem;
-  color: ${theme.colors.white.base};
+  color: ${(props) => props.theme.colors.white.base};
   background-color: ${(props) => props.theme.colors.black.blue};
-  border-radius: ${theme.borderRadius.default};
+  border-radius: ${(props) => props.theme.borderRadius.default};
 `;
 
 const TitleList = styled.ul`
@@ -25,19 +24,19 @@ const TitleList = styled.ul`
 
 const TitleItem = styled.li`
   text-align: left;
-  color: ${theme.colors.white.base};
+  color: ${(props) => props.theme.colors.white.base};
 `;
 
 const StyledLink = styled(Link)`
-  color: ${theme.colors.white.base};
+  color: ${(props) => props.theme.colors.white.base};
 `;
 
 const Title = styled.p`
   display: inline-block;
-  color: ${theme.colors.white.base};
+  color: ${(props) => props.theme.colors.white.base};
   font-size: 2rem;
   text-align: center;
-  border-bottom: 4px ${theme.colors.primary.light} solid;
+  border-bottom: 4px ${(props) => props.theme.colors.primary.light} solid;
 `;
 
 const Aside = () => {

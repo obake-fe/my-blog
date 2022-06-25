@@ -4,7 +4,6 @@ import Helmet from 'react-helmet';
 import { Layout } from '@layouts/index';
 import { site } from '@config/site';
 import { Pagination, PostList } from '@components/index';
-import theme from '@config/theme';
 import { TagsPageContext } from '../../gatsby-node';
 
 const PostWrapper = styled.div`
@@ -18,7 +17,7 @@ const PostWrapper = styled.div`
 `;
 
 const TagTitle = styled.h2`
-  color: ${theme.colors.white.base};
+  color: ${(props) => props.theme.colors.white.base};
 `;
 
 type Props = TagsPageContext;
