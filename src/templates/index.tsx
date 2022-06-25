@@ -78,7 +78,7 @@ export const query = graphql`
               excerpt(pruneLength: 75)
             }
           }
-          publishDate(formatString: "MM.DD.YYYY")
+          publishDate(formatString: "YYYY/MM/DD")
         }
       }
     }

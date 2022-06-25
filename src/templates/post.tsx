@@ -43,7 +43,11 @@ const TitleItem = styled.li`
 `;
 
 const StyledLink = styled(Link)`
+  display: inline;
   color: ${theme.colors.white.base};
+  &:hover {
+    border-bottom: 2px ${(props) => props.theme.colors.primary.light} solid;
+  }
 `;
 
 export type Props = {
@@ -94,7 +98,7 @@ export const query = graphql`
       tags {
         title
       }
-      publishDate
+      publishDate(formatString: "YYYY/MM/DD")
       contents {
         childMarkdownRemark {
           html

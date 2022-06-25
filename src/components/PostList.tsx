@@ -42,7 +42,9 @@ const SubWrapper = styled.div`
 `;
 
 const StyledLink = styled(Link)`
-  margin-bottom: 1rem;
+  display: inline-block;
+  line-height: 1.8;
+  margin-bottom: 1.6rem;
 `;
 
 const Info = styled.div`
@@ -52,10 +54,10 @@ const Info = styled.div`
 `;
 
 const Title = styled.h2`
-  margin-bottom: 1.6rem;
+  display: inline;
   color: ${(props) => props.theme.colors.white.light};
   &:hover {
-    color: ${(props) => props.theme.colors.primary.light};
+    border-bottom: 2px ${(props) => props.theme.colors.primary.light} solid;
   }
 `;
 

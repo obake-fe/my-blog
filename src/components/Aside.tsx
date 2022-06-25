@@ -12,7 +12,7 @@ const Wrapper = styled.aside`
 const Card = styled.div`
   text-align: center;
   padding: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   color: ${(props) => props.theme.colors.white.base};
   background-color: ${(props) => props.theme.colors.black.blue};
   border-radius: ${(props) => props.theme.borderRadius.default};
@@ -28,7 +28,11 @@ const TitleItem = styled.li`
 `;
 
 const StyledLink = styled(Link)`
+  display: inline;
   color: ${(props) => props.theme.colors.white.base};
+  &:hover {
+    border-bottom: 2px ${(props) => props.theme.colors.primary.light} solid;
+  }
 `;
 
 const Title = styled.p`

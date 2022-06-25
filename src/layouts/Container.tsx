@@ -25,7 +25,7 @@ const Wrapper = styled.section<Props>`
   }
 
   & + section {
-    margin-top: 2rem;
+    margin-top: 1rem;
   }
 `;
 

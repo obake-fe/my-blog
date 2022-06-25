@@ -38,7 +38,7 @@ const Pagination = ({ path, currentPage, isFirst, isLast }: Props) => (
     <PaginationList>
       {!isFirst && (
         <StyledLink
-          to={currentPage === 2 ? path : `${path}page-${currentPage - 1}/`}
+          to={currentPage === 2 ? path : `${path}page-${currentPage - 1}`}
         >
           <span>前のページ</span>
         </StyledLink>
@@ -46,7 +46,7 @@ const Pagination = ({ path, currentPage, isFirst, isLast }: Props) => (
     </PaginationList>
     <PaginationList>
       {!isLast && (
-        <StyledLink to={`${path}page-${currentPage + 1}/`}>
+        <StyledLink to={`${path}page-${currentPage + 1}`}>
           <span>次のページ</span>
         </StyledLink>
       )}

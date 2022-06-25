@@ -53,9 +53,9 @@ const Header = () => (
       <Title>
         <StyledLink to="/">Obake Engineer Blog</StyledLink>
       </Title>
-      <Nav>
-        <Link to="/about">About</Link>
-      </Nav>
+      {/* <Nav> */}
+      {/*  <Link to="/about">About</Link> */}
+      {/* </Nav> */}
     </Inner>
   </Wrapper>
 );
