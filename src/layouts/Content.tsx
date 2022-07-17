@@ -62,6 +62,10 @@ const Wrapper = styled.div`
       }
     }
   }
+  .windowIcon {
+    width: 16px;
+    margin-left: 4px;
+  }
 `;
 
 type Props = {
