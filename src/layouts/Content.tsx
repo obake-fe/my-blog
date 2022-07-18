@@ -36,7 +36,16 @@ const Wrapper = styled.div`
   }
   h2 {
     font-weight: 600;
-    margin-top: 1rem;
+    margin-top: 5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 5px solid #fff;
+    padding-bottom: 6px;
+  }
+  h3 {
+    margin-top: 3rem;
+  }
+  h4 {
+    margin-top: 3rem;
   }
   h1,
   h2,
@@ -44,7 +53,6 @@ const Wrapper = styled.div`
   h4,
   h5,
   h6 {
-    display: inline-block;
     font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN',
       'Hiragino Sans', Meiryo, sans-serif;
     position: relative;

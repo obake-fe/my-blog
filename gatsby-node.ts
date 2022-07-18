@@ -59,7 +59,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
                   excerpt(pruneLength: 75)
                 }
               }
-              publishDate(formatString: "MM.DD.YYYY")
+              publishDate(formatString: "YYYY/MM/DD")
             }
           }
         }
