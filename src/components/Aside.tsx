@@ -2,6 +2,9 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import AllTagsBlock from '@components/AllTagsBlock';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTwitter, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faMagnifyingGlass, faSquare } from '@fortawesome/free-solid-svg-icons';
 import { AsideQuery } from '../../types/graphql-types';
 
 const Wrapper = styled.aside`
@@ -41,6 +44,46 @@ const Title = styled.p`
   font-size: 2rem;
   text-align: center;
   border-bottom: 4px ${(props) => props.theme.colors.primary.light} solid;
+`;
+
+const IconListWrapper = styled.ul`
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  width: 60%;
+`;
+
+const IconList = styled.li`
+  font-size: 2rem;
+  list-style: none;
+  margin: 0;
+  width: 32px;
+`;
+
+const IconLink = styled.a`
+  color: ${(props) => props.theme.colors.white.base};
+  &:hover {
+    color: ${(props) => props.theme.colors.primary.light};
+  }
+`;
+
+const IconQiita = styled.span`
+  position: relative;
+  display: block;
+`;
+
+const IconSquare = styled.span`
+  position: absolute;
+  top: 0;
+  left: 0;
+`;
+
+const IconGrass = styled.span`
+  position: absolute;
+  top: 1px;
+  left: -1px;
+  color: #2e3246;
+  font-size: 2.1rem;
 `;
 
 const Aside = () => {
@@ -84,6 +127,32 @@ const Aside = () => {
 
   return (
     <Wrapper>
+      <Card>
+        <IconListWrapper>
+          <IconList>
+            <IconLink href="https://twitter.com/obake_fe" target="_blank">
+              <FontAwesomeIcon icon={faTwitter} />
+            </IconLink>
+          </IconList>
+          <IconList>
+            <IconLink href="https://github.com/obake-fe" target="_blank">
+              <FontAwesomeIcon icon={faGithub} />
+            </IconLink>
+          </IconList>
+          <IconList>
+            <IconLink href="https://qiita.com/obake_fe" target="_blank">
+              <IconQiita>
+                <IconSquare>
+                  <FontAwesomeIcon icon={faSquare} />
+                </IconSquare>
+                <IconGrass>
+                  <FontAwesomeIcon icon={faMagnifyingGlass} />
+                </IconGrass>
+              </IconQiita>
+            </IconLink>
+          </IconList>
+        </IconListWrapper>
+      </Card>
       <Card>
         <Title>Recent Posts</Title>
         <TitleList>

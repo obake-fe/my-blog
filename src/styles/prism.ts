@@ -33,6 +33,7 @@ const prism = css`
     line-height: 1.5;
     tab-size: 4;
     hyphens: none;
+    font-size: 1rem;
   }
   pre[class*='language-'] {
     padding: 1.8rem 1em 1em;
