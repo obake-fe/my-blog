@@ -30,7 +30,7 @@ const Index: React.FC<Props> = ({ data, pageContext }) => {
   const { currentPage, isFirst, isLast } = pageContext;
   return (
     <Layout>
-      <Helmet title="Home Page" />
+      <Helmet title="Obake Engineer Blog" />
       <PostWrapper>
         {edges.map(({ node }) => {
           const { id, title, slug, tags, publishDate, contents } = node;

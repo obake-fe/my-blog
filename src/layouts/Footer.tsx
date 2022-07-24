@@ -2,6 +2,8 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 const Wrapper = styled.footer`
+  display: flex;
+  justify-content: center;
   position: relative;
   padding-top: 2rem;
   bottom: 0;
@@ -14,6 +16,13 @@ const Wrapper = styled.footer`
   }
 `;
 
+const ObakeImg = styled.img`
+  width: 22px;
+  height: 22px;
+  margin-right: 6px;
+  margin-top: 2px;
+`;
+
 const Text = styled.div`
   margin: 0;
   padding-bottom: 2rem;
@@ -23,11 +32,9 @@ const Text = styled.div`
 
 const Footer = () => (
   <Wrapper>
+    <ObakeImg src="obake.png" alt="obake" />
     <Text>
-      <span>
-        Gatsby Tutorial Starter -{' '}
-        <a href="https://justinformentin.com">Justin Formentin</a>
-      </span>
+      <span>Obake Engineer Blog</span>
     </Text>
   </Wrapper>
 );
