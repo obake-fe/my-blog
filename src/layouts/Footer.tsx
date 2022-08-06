@@ -11,9 +11,6 @@ const Wrapper = styled.footer`
   background: ${(props) => props.theme.gradient.leftToRight};
   font-family: ${(props) => props.theme.fontFamily.body};
   font-weight: 500;
-  @media (max-width: ${(props) => props.theme.breakpoints.s}) {
-    padding-top: 7rem;
-  }
 `;
 
 const ObakeImg = styled.img`

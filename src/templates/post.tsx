@@ -10,6 +10,12 @@ import { PostPageContext } from '../../gatsby-node';
 
 const PostTitle = styled.h2`
   font-size: 4rem;
+  @media (max-width: 1000px) {
+    font-size: 3rem;
+  }
+  @media (max-width: 700px) {
+    font-size: 2rem;
+  }
 `;
 
 const PostInfo = styled.div`
@@ -18,6 +24,9 @@ const PostInfo = styled.div`
   justify-content: space-between;
   align-items: end;
   margin: 4rem 0;
+  @media (max-width: 700px) {
+    margin: 2rem 0;
+  }
 `;
 
 const PostDate = styled.p`
@@ -71,7 +80,7 @@ const Post = ({ data, pageContext }: Props) => {
           <Content input={contents.childMarkdownRemark.html} />
         </Container>
         {relatedPosts.length > 0 && (
-          <Container>
+          <Container center>
             <Title>Related Posts</Title>
             <TitleList>
               {relatedPosts.slice(0, 4).map(({ node }) => (

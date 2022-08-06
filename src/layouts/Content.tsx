@@ -40,6 +40,9 @@ const Wrapper = styled.div`
     margin-bottom: 1.5rem;
     border-bottom: 5px solid #fff;
     padding-bottom: 6px;
+    @media (max-width: 700px) {
+      margin-top: 2rem;
+    }
   }
   h3 {
     margin-top: 3rem;

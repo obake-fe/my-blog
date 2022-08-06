@@ -15,7 +15,7 @@ const Wrapper = styled.aside`
     margin-left: 0;
   }
   @media (max-width: 700px) {
-    margin: 2rem 0 1rem 0;
+    margin: 1rem 0 0 0;
   }
 `;
 
@@ -28,6 +28,10 @@ const Card = styled.div`
   border-radius: ${(props) => props.theme.borderRadius.default};
   @media (max-width: 1000px) {
     padding: 1.4rem;
+    margin-top: 1rem;
+  }
+  @media (max-width: 700px) {
+    margin-bottom: 0;
   }
 `;
 

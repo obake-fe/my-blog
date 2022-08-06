@@ -5,11 +5,10 @@ type Props = {
   children: ReactNode;
   type?: string;
   className?: string;
-  center?: object;
+  center?: boolean;
 };
 
 const Wrapper = styled.section<Props>`
-  text-align: ${(props) => (props.center ? 'center' : '')};
   padding: 3rem;
   max-width: 60rem;
   flex: 1;
@@ -17,11 +16,9 @@ const Wrapper = styled.section<Props>`
   border-radius: ${(props) => props.theme.borderRadius.default};
 
   @media (max-width: ${(props) => props.theme.breakpoints.m}) {
-    width: 90%;
-  }
-
-  @media (max-width: ${(props) => props.theme.breakpoints.s}) {
-    width: 95%;
+    width: 100%;
+    text-align: ${(props) => (props.center ? 'center' : '')};
+    padding: 1.4rem;
   }
 
   & + section {
