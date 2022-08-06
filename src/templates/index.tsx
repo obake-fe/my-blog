@@ -9,16 +9,8 @@ import { IndexPageContext } from '../../gatsby-node';
 
 const PostWrapper = styled.div`
   width: 60rem;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
   @media (max-width: 1000px) {
     width: auto;
-    margin: 2rem 0;
-  }
-  @media (max-width: 700px) {
-    margin: 0;
   }
 `;
 
