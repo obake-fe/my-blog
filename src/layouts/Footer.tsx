@@ -29,7 +29,7 @@ const Text = styled.div`
 
 const Footer = () => (
   <Wrapper>
-    <ObakeImg src="obake.png" alt="obake" />
+    <ObakeImg src="/obake.png" alt="obake" />
     <Text>
       <span>Obake Engineer Blog</span>
     </Text>

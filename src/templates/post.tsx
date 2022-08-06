@@ -25,7 +25,7 @@ const PostInfo = styled.div`
   align-items: end;
   margin: 4rem 0;
   @media (max-width: 700px) {
-    margin: 2rem 0;
+    margin: 0;
   }
 `;
 

@@ -9,10 +9,7 @@ import { TagsPageContext } from '../../gatsby-node';
 const PostWrapper = styled.div`
   width: 60rem;
   @media (max-width: 1000px) {
-    margin: 4rem 2rem 1rem 2rem;
-  }
-  @media (max-width: 700px) {
-    margin: 4rem 1rem 1rem 1rem;
+    width: 100%;
   }
 `;
 
