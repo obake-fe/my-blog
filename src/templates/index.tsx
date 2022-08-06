@@ -14,10 +14,11 @@ const PostWrapper = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   @media (max-width: 1000px) {
-    margin: 4rem 2rem 1rem 2rem;
+    width: auto;
+    margin: 2rem 0;
   }
   @media (max-width: 700px) {
-    margin: 4rem 1rem 1rem 1rem;
+    margin: 0;
   }
 `;
 

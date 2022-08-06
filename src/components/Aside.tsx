@@ -10,6 +10,13 @@ import { AsideQuery } from '../../types/graphql-types';
 const Wrapper = styled.aside`
   margin-left: 1rem;
   width: 350px;
+  @media (max-width: 1000px) {
+    width: auto;
+    margin-left: 0;
+  }
+  @media (max-width: 700px) {
+    margin: 2rem 0 1rem 0;
+  }
 `;
 
 const Card = styled.div`
@@ -19,6 +26,9 @@ const Card = styled.div`
   color: ${(props) => props.theme.colors.white.base};
   background-color: ${(props) => props.theme.colors.black.blue};
   border-radius: ${(props) => props.theme.borderRadius.default};
+  @media (max-width: 1000px) {
+    padding: 1.4rem;
+  }
 `;
 
 const TitleList = styled.ul`

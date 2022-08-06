@@ -7,7 +7,7 @@ const TagsContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: left;
   a {
     margin: 0 1rem 1rem 0;
     color: ${(props) => props.theme.colors.black.blue};
@@ -18,6 +18,11 @@ const TagsContainer = styled.div`
       color: ${(props) => props.theme.colors.white.light};
       background: ${(props) => props.theme.colors.primary.light};
       border: ${(props) => props.theme.colors.primary.light};
+    }
+    @media (max-width: 700px) {
+      margin: 0 0.5rem 0.5rem 0;
+      font-size: 0.7rem;
+      padding: 0.2rem 0.4rem;
     }
   }
 `;

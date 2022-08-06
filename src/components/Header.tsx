@@ -18,6 +18,9 @@ const Inner = styled.div`
   color: ${(props) => props.theme.colors.white.base};
   width: 100%;
   padding: 0 4rem;
+  @media (max-width: 700px) {
+    padding: 0 2rem;
+  }
 `;
 
 const StyledLink = styled(Link)`
@@ -28,6 +31,9 @@ const StyledLink = styled(Link)`
 const Title = styled.h1`
   font-size: 2rem;
   margin: 0;
+  @media (max-width: 700px) {
+    font-size: 1.4rem;
+  }
 `;
 
 const Nav = styled.nav`

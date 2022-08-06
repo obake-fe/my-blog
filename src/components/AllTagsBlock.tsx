@@ -28,6 +28,23 @@ const TagWrapper = styled.div`
       border: ${(props) => props.theme.colors.primary.light};
     }
   }
+  @media (max-width: 1000px) {
+    width: auto;
+    margin: 1rem 1rem 0 0;
+    & + div {
+      margin: 1rem 1rem 0 0;
+    }
+  }
+  @media (max-width: 700px) {
+    margin: 0.4rem 0.4rem 0 0;
+    & + div {
+      margin: 0.4rem 0.4rem 0 0;
+    }
+    a {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.4rem;
+    }
+  }
 `;
 
 type Props = {

@@ -19,18 +19,12 @@ const Wrapper = styled.article`
     box-shadow: ${(props) => props.theme.shadow.feature.small.hover};
   }
 
-  @media (max-width: 1000px) {
-    flex-basis: calc(99.9% * 1 / 2 - 1rem);
-    max-width: calc(99.9% * 1 / 2 - 1rem);
-    width: calc(99.9% * 1 / 2 - 1rem);
-    height: 18rem;
-  }
-
   @media (max-width: 700px) {
     flex-basis: 100%;
     max-width: 100%;
     width: 100%;
-    height: 15rem;
+    height: auto;
+    margin-bottom: 1.2rem;
   }
 `;
 
@@ -51,6 +45,9 @@ const Info = styled.div`
   height: 100%;
   color: ${(props) => props.theme.colors.white.light};
   padding: 2rem;
+  @media (max-width: 700px) {
+    padding: 1.4rem 1.4rem;
+  }
 `;
 
 const Title = styled.h2`
@@ -73,6 +70,14 @@ const ButtonLink = styled(Link)`
     color: ${(props) => props.theme.colors.white.light};
     background: ${(props) => props.theme.colors.primary.light};
     border: ${(props) => props.theme.colors.primary.light};
+  }
+  @media (max-width: 700px) {
+    right: auto;
+    bottom: auto;
+    display: inline-block;
+    position: relative;
+    left: calc(100% - 96px);
+    margin-top: 1.4rem;
   }
 `;
 
