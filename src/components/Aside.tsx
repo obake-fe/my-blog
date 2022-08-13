@@ -2,6 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import AllTagsBlock from '@components/AllTagsBlock';
+import SearchModal from '@components/SearchModal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faMagnifyingGlass, faSquare } from '@fortawesome/free-solid-svg-icons';
@@ -141,6 +142,10 @@ const Aside = () => {
 
   return (
     <Wrapper>
+      <Card>
+        <Title>Search</Title>
+        <SearchModal edges={edges} />
+      </Card>
       <Card>
         <IconListWrapper>
           <IconList>
