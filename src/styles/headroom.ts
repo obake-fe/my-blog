@@ -80,6 +80,9 @@ const headroom = css`
     width: 750px;
     height: 600px;
   }
+  .modalNone {
+    display: none;
+  }
   .modalSearchOverlay {
     z-index: 960;
     top: 0px;

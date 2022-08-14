@@ -143,10 +143,6 @@ const Aside = () => {
   return (
     <Wrapper>
       <Card>
-        <Title>Search</Title>
-        <SearchModal edges={edges} />
-      </Card>
-      <Card>
         <IconListWrapper>
           <IconList>
             <IconLink href="https://twitter.com/obake_fe" target="_blank">
@@ -171,6 +167,10 @@ const Aside = () => {
             </IconLink>
           </IconList>
         </IconListWrapper>
+      </Card>
+      <Card>
+        <Title>Search</Title>
+        <SearchModal edges={edges} />
       </Card>
       <Card>
         <Title>Recent Posts</Title>

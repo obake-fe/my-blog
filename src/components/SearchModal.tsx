@@ -2,23 +2,28 @@ import React, { useState } from 'react';
 import Modal from 'react-modal';
 import styled from '@emotion/styled';
 import Search from './search';
+import { AsideQuery } from '../../types/graphql-types';
 
-const ModalWrapper = styled.div``;
+type StyleProps = {
+  text: boolean;
+};
+
+const ModalWrapper = styled.div<StyleProps>`
+  display: ${(props) => (props.text ? 'block' : 'none')};
+`;
+
+type Props = {
+  edges: AsideQuery['allContentfulBlogPost']['edges'];
+};
 
 Modal.setAppElement('#___gatsby'); // public/htmlのid参照
-const SearchModal = ({ edges }) => {
-  const emptyQuery = '';
+const SearchModal = ({ edges }: Props) => {
   const [state, setState] = useState({
     filteredData: [],
-    query: emptyQuery
+    query: ''
   });
 
-  const [text, setText] = React.useState('');
-
-  const allPosts = edges;
-
   const handleInputChange = (event) => {
-    setText(event.target.value);
     const query = event.target.value;
     const posts = edges || [];
 
@@ -34,30 +39,21 @@ const SearchModal = ({ edges }) => {
     });
   };
 
-  const sampleRef = React.useRef(null);
-
   const { filteredData, query } = state;
-  const hasSearchResults = filteredData && query !== emptyQuery;
-  const result = hasSearchResults ? filteredData : allPosts;
-  console.log('🐳', result);
+  console.log('🐳', filteredData);
   console.log('✨', query);
   return (
-    <ModalWrapper>
-      <input type="text" onChange={handleInputChange} ref={sampleRef} />
+    <div>
+      <input type="text" onChange={handleInputChange} />
       <Modal
-        isOpen={!!text}
+        isOpen
         contentLabel="Seach Modal"
-        className="modalSearchWindow"
+        className={query ? 'modalSearchWindow' : 'modalNone'}
         overlayClassName="modalSearchOverlay"
       >
-        <Search
-          result={result}
-          query={query}
-          sampleRef={sampleRef}
-          text={text}
-        />
+        <Search result={filteredData} query={query} />
       </Modal>
-    </ModalWrapper>
+    </div>
   );
 };
 export default SearchModal;
