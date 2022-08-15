@@ -13,7 +13,8 @@ const Wrapper = styled.aside`
   min-width: 350px;
   max-width: 350px;
   @media (max-width: 1000px) {
-    width: auto;
+    max-width: 100%;
+    min-width: 100%;
     margin-left: 0;
   }
   @media (max-width: 700px) {
@@ -34,6 +35,18 @@ const Card = styled.div`
   }
   @media (max-width: 700px) {
     margin-bottom: 0;
+  }
+`;
+
+const SearchCard = styled.div`
+  text-align: center;
+  padding: 2rem;
+  margin-bottom: 1rem;
+  color: ${(props) => props.theme.colors.white.base};
+  background-color: ${(props) => props.theme.colors.black.blue};
+  border-radius: ${(props) => props.theme.borderRadius.default};
+  @media (max-width: 1000px) {
+    display: none;
   }
 `;
 
@@ -169,10 +182,10 @@ const Aside = () => {
           </IconList>
         </IconListWrapper>
       </Card>
-      <Card>
+      <SearchCard>
         <Title>Search</Title>
         <SearchModal edges={edges} />
-      </Card>
+      </SearchCard>
       <Card>
         <Title>Recent Posts</Title>
         <TitleList>

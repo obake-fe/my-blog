@@ -82,6 +82,9 @@ const headroom = css`
     @media (max-width: 1400px) {
       inset: 356px 110px 0 auto;
     }
+    @media (max-width: 1000px) {
+      display: none;
+    }
   }
   .modalNone {
     display: none;
