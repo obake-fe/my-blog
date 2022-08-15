@@ -65,20 +65,23 @@ const headroom = css`
     }
   }
   .modalSearchWindow {
+    color: ${theme.colors.black.base};
+    background-color: ${theme.colors.white.base};
     z-index: 965;
-    background: #fff;
-    margin: 4vw auto 0;
-    margin-right: -50%;
-    padding: 40px;
-    inset: 50% auto auto 50%;
-    transform: translate(-50%, -50%);
+    margin: 0 auto 0;
+    padding: 20px 28px;
+    inset: 356px -768px 0 0;
     position: absolute;
     border: 1px solid rgb(204, 204, 204);
     overflow: auto;
     border-radius: 4px;
     outline: none;
-    width: 750px;
-    height: 600px;
+    width: 400px;
+    height: fit-content;
+    box-shadow: ${theme.shadow.text.small};
+    @media (max-width: 1400px) {
+      inset: 356px 110px 0 auto;
+    }
   }
   .modalNone {
     display: none;

@@ -10,7 +10,8 @@ import { AsideQuery } from '../../types/graphql-types';
 
 const Wrapper = styled.aside`
   margin-left: 1rem;
-  width: 350px;
+  min-width: 350px;
+  max-width: 350px;
   @media (max-width: 1000px) {
     width: auto;
     margin-left: 0;

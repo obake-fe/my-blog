@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import styled from '@emotion/styled';
-import Search from './search';
+import Search from './SearchResult';
 import { AsideQuery } from '../../types/graphql-types';
 
 type StyleProps = {
@@ -10,6 +10,10 @@ type StyleProps = {
 
 const ModalWrapper = styled.div<StyleProps>`
   display: ${(props) => (props.text ? 'block' : 'none')};
+`;
+
+const Input = styled.input`
+  width: 12rem;
 `;
 
 type Props = {
@@ -33,6 +37,7 @@ const SearchModal = ({ edges }: Props) => {
       const { title } = post.node;
       return title.toLowerCase().includes(query.toLowerCase());
     });
+
     setState({
       query,
       filteredData
@@ -44,7 +49,7 @@ const SearchModal = ({ edges }: Props) => {
   console.log('✨', query);
   return (
     <div>
-      <input type="text" onChange={handleInputChange} />
+      <Input type="text" onChange={handleInputChange} />
       <Modal
         isOpen
         contentLabel="Seach Modal"
