@@ -4,14 +4,6 @@ import styled from '@emotion/styled';
 import Search from './SearchResult';
 import { AsideQuery } from '../../types/graphql-types';
 
-type StyleProps = {
-  text: boolean;
-};
-
-const ModalWrapper = styled.div<StyleProps>`
-  display: ${(props) => (props.text ? 'block' : 'none')};
-`;
-
 const Input = styled.input`
   width: 12rem;
 `;
@@ -29,13 +21,15 @@ const SearchModal = ({ edges }: Props) => {
 
   const handleInputChange = (event) => {
     const query = event.target.value;
-    const posts = edges || [];
+    const queryArray = query.split(' ');
 
-    console.log('🐛', posts);
-
-    const filteredData = posts.filter((post) => {
+    const filteredData = edges.filter((post) => {
       const { title } = post.node;
-      return title.toLowerCase().includes(query.toLowerCase());
+
+      // スペース区切りの全単語に一致する記事を絞り込む
+      return queryArray.every((str) =>
+        title.toLowerCase().includes(str.toLowerCase())
+      );
     });
 
     setState({
@@ -45,10 +39,9 @@ const SearchModal = ({ edges }: Props) => {
   };
 
   const { filteredData, query } = state;
-  console.log('🐳', filteredData);
-  console.log('✨', query);
+
   return (
-    <div>
+    <>
       <Input type="text" onChange={handleInputChange} />
       <Modal
         isOpen
@@ -58,7 +51,7 @@ const SearchModal = ({ edges }: Props) => {
       >
         <Search result={filteredData} query={query} />
       </Modal>
-    </div>
+    </>
   );
 };
 export default SearchModal;

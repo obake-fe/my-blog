@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
+import { AsideQuery } from '../../types/graphql-types';
 
 const ModalWrapper = styled.div`
   width: auto;
@@ -27,32 +28,32 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const SearchResult = ({ result, query }) => {
+type OwnProps = {
+  result: AsideQuery['allContentfulBlogPost']['edges'];
+  query: string;
+};
+
+type Props = OwnProps;
+
+const SearchResult = ({ result, query }: Props) => {
   // 最大5件まで表示する
   const dividedData = result.slice(0, 5);
 
   return (
     <ModalWrapper>
-      <div className="result-inner">
-        <div className="result-inner__res">
-          {`${query} の検索結果: ${result.length}件中 ${dividedData.length}件表示`}
-        </div>
-        <SearchResultList>
-          {dividedData &&
-            dividedData.map(({ node: post }) => (
-              <SearchResultListItem key={post.slug}>
-                <StyledLink to={post.slug}>
-                  <div className="result-inner__title">{post.title}</div>
-                  <div className="result-inner__info">
-                    <div className="result-inner__info-date">
-                      {post.createdAt}
-                    </div>
-                  </div>
-                </StyledLink>
-              </SearchResultListItem>
-            ))}
-        </SearchResultList>
-      </div>
+      <p>
+        {`${query} の検索結果: ${result.length}件中 ${dividedData.length}件表示`}
+      </p>
+      <SearchResultList>
+        {dividedData &&
+          dividedData.map(({ node: post }) => (
+            <SearchResultListItem key={post.slug}>
+              <StyledLink to={post.slug}>
+                <p>{post.title}</p>
+              </StyledLink>
+            </SearchResultListItem>
+          ))}
+      </SearchResultList>
     </ModalWrapper>
   );
 };
