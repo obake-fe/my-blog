@@ -18,6 +18,7 @@ export type IndexPageContext = {
 export type TagsPageContext = {
   pageContext: {
     posts: ContentfulBlogPost[];
+    total: number;
     tagName: string;
     currentPage: number;
     isFirst: boolean;
@@ -125,6 +126,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
         component: tagPosts,
         context: {
           posts: sortedPosts.slice(i * 6, i * 6 + blogPostPerPage - 1),
+          total: sortedPosts.length,
           tagName,
           currentPage: i + 1,
           isFirst: i === 0,

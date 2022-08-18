@@ -20,13 +20,15 @@ const TagTitle = styled.h2`
 type Props = TagsPageContext;
 
 const Tag: React.FC<Props> = ({ pageContext }) => {
-  const { posts, tagName, currentPage, isFirst, isLast } = pageContext;
+  const { posts, total, tagName, currentPage, isFirst, isLast } = pageContext;
 
   return (
     <Layout>
       <Helmet title={`${tagName} | ${site.title}`} />
       <PostWrapper>
-        <TagTitle>{tagName}の記事一覧</TagTitle>
+        <TagTitle>
+          {tagName}の記事一覧 全{total}件
+        </TagTitle>
         {posts.map((node) => {
           const { id, slug, title, tags, publishDate, contents } = node;
           return (
