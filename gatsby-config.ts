@@ -84,6 +84,22 @@ const plugins: GatsbyConfig['plugins'] = [
       spaceId: process.env.CONTENTFUL_SPACE_ID,
       accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
     }
+  },
+  {
+    resolve: 'gatsby-plugin-netlify',
+    options: {
+      headers: {
+        '/*.html': ['Cache-Control: public, max-age=0, must-revalidate'],
+        '/page-data/*': ['Cache-Control: public, max-age=0, must-revalidate'],
+        '/page-data/app-data.json': [
+          'Cache-Control: public, max-age=0, must-revalidate'
+        ],
+        '/static/*': ['Cache-Control: public, max-age=31536000, immutable'],
+        '/sw.js': ['Cache-Control: no-cache'],
+        '/**/*.js': ['Cache-Control: public, max-age=31536000, immutable'],
+        '/**/*.css': ['Cache-Control: public, max-age=31536000, immutable']
+      }
+    }
   }
 ];
 
