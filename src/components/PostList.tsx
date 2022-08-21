@@ -5,7 +5,7 @@ import { Props as PagesIndexProps } from '@templates/index';
 import { TagsBlock } from '@components/index';
 
 const Wrapper = styled.article`
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   position: relative;
   z-index: 10;
   background-color: ${(props) => props.theme.colors.black.blue};
@@ -14,10 +14,6 @@ const Wrapper = styled.article`
   height: 18rem;
   max-width: 60rem;
   width: 100%;
-
-  &:hover {
-    box-shadow: ${(props) => props.theme.shadow.feature.small.hover};
-  }
 
   @media (max-width: 700px) {
     flex-basis: 100%;

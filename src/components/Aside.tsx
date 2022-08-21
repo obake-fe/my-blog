@@ -73,6 +73,7 @@ const Title = styled.p`
   font-size: 2rem;
   text-align: center;
   border-bottom: 4px ${(props) => props.theme.colors.primary.light} solid;
+  margin-bottom: 1.2rem;
 `;
 
 const IconListWrapper = styled.ul`
