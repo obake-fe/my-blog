@@ -22,12 +22,19 @@ type Props = TagsPageContext;
 const Tag: React.FC<Props> = ({ pageContext }) => {
   const { posts, total, tagName, currentPage, isFirst, isLast } = pageContext;
 
+  const smallOne = (currentPage - 1) * 6 + 1;
+  const bigOne = currentPage * 6 < total ? currentPage * 6 : total;
+
   return (
     <Layout>
       <Helmet title={`${tagName} | ${site.title}`} />
       <PostWrapper>
         <TagTitle>
-          {tagName}の記事一覧 全{total}件
+          {tagName}の記事一覧
+          {smallOne === bigOne
+            ? ` ${smallOne}件目`
+            : ` ${smallOne}〜${bigOne}件目`}
+          を表示／全{total}件
         </TagTitle>
         {posts.map((node) => {
           const { id, slug, title, tags, publishDate, contents } = node;
