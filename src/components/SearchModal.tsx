@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import styled from '@emotion/styled';
-import Search from './SearchResult';
+import { SearchResult } from '@components/index';
 import { AsideQuery } from '../../types/graphql-types';
 
 const Input = styled.input`
@@ -49,7 +49,7 @@ const SearchModal = ({ edges }: Props) => {
         className={query ? 'modalSearchWindow' : 'modalNone'}
         overlayClassName="modalSearchOverlay"
       >
-        <Search result={filteredData} query={query} />
+        <SearchResult result={filteredData} query={query} />
       </Modal>
     </>
   );

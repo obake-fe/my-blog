@@ -1,4 +1,6 @@
-export { default as Container } from '@layouts/Container';
-export { default as Content } from '@layouts/Content';
-export { default as Footer } from '@layouts/Footer';
-export { default as Layout } from '@layouts/Layout';
+import Container from '@layouts/Container';
+import Content from '@layouts/Content';
+import Footer from '@layouts/Footer';
+import Layout from '@layouts/Layout';
+
+export { Container, Content, Footer, Layout };

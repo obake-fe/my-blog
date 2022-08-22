@@ -53,7 +53,7 @@ type Props = {
   };
 };
 
-const TagsBlock: React.FC<Props> = ({ postsByTag }) => {
+const AllTagsBlock: React.FC<Props> = ({ postsByTag }) => {
   // タグの多い順に並べ替える
   const tags = Object.keys(postsByTag).sort(
     (a, b) => postsByTag[b].length - postsByTag[a].length
@@ -79,4 +79,4 @@ const TagsBlock: React.FC<Props> = ({ postsByTag }) => {
   );
 };
 
-export default TagsBlock;
+export default AllTagsBlock;

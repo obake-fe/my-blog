@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { graphql, Link, useStaticQuery } from 'gatsby';
-import AllTagsBlock from '@components/AllTagsBlock';
+import { AllTagsBlock } from '@components/index';
 import SearchModal from '@components/SearchModal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faGithub } from '@fortawesome/free-brands-svg-icons';
