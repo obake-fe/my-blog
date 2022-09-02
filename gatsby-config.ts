@@ -1,4 +1,5 @@
 import type { GatsbyConfig } from 'gatsby';
+import path from 'path';
 import { site } from './config/site';
 
 require('dotenv').config({
@@ -34,6 +35,51 @@ const plugins: GatsbyConfig['plugins'] = [
           options: {
             // target=_blankの脆弱性対策
             rel: 'noopener noreferrer'
+          }
+        },
+        {
+          resolve: 'gatsby-remark-og-image',
+          options: {
+            output: {
+              directory: '',
+              fileName: 'thumbnail.png'
+            },
+            image: {
+              width: 1200,
+              height: 630,
+              backgroundColor: '#e2eadd'
+            },
+            style: {
+              title: {
+                fontFamily: 'Noto Sans JP',
+                fontColor: '#333333',
+                fontWeight: 'Bold',
+                fontSize: 56,
+                paddingTop: 50,
+                paddingBottom: 180,
+                paddingLeft: 150,
+                paddingRight: 150
+              },
+              author: {
+                fontFamily: 'Noto Sans JP',
+                fontColor: '#333333',
+                fontWeight: 'Bold',
+                fontSize: 42
+              }
+            },
+            meta: {
+              title: '',
+              author: 'obake_fe                   Obake Engineer Blog'
+            },
+            fontFile: [
+              {
+                path: path.resolve('src/assets/fonts/NotoSansJP-Bold.otf'),
+                family: 'Noto Sans JP',
+                weight: 'bold'
+              }
+            ],
+            iconFile: path.resolve('static/obake.png'),
+            timeout: 10000
           }
         }
       ]
