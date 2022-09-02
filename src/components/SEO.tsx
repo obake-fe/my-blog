@@ -27,7 +27,6 @@ const query = graphql`
 type OwnProps = {
   title?: string;
   description?: string;
-  banner?: string;
   pathname?: string;
   article?: boolean;
 };
@@ -37,7 +36,6 @@ type Props = OwnProps & SeoQuery;
 const SEO = ({
   title = null,
   description = null,
-  banner = null,
   pathname = null,
   article = false
 }: Props) => (
@@ -64,8 +62,8 @@ const SEO = ({
       const seo = {
         title: title || defaultTitle,
         description: defaultDescription || description,
-        image: `${siteUrl}${banner || defaultBanner}`,
-        url: `${siteUrl}${pathname || '/'}`
+        image: pathname ? `/ogp${pathname}/thumbnail.png` : `/${defaultBanner}`,
+        url: `${pathname || '/'}`
       };
       const realPrefix = pathPrefix === '/' ? '' : pathPrefix;
       let schemaOrgJSONLD = [
