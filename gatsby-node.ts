@@ -57,7 +57,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
               }
               contents {
                 childMarkdownRemark {
-                  excerpt(pruneLength: 75)
+                  excerpt(pruneLength: 120)
                 }
               }
               publishDate(formatString: "YYYY/MM/DD")

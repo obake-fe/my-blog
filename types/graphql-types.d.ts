@@ -5728,7 +5728,7 @@ export type TemplatesPostQueryVariables = Exact<{
 }>;
 
 
-export type TemplatesPostQuery = { contentfulBlogPost?: { id: string, slug?: string | null, title?: string | null, publishDate?: any | null, tags?: Array<{ title?: string | null } | null> | null, contents?: { childMarkdownRemark?: { html?: string | null } | null } | null } | null };
+export type TemplatesPostQuery = { contentfulBlogPost?: { id: string, slug?: string | null, title?: string | null, publishDate?: any | null, tags?: Array<{ title?: string | null } | null> | null, contents?: { childMarkdownRemark?: { html?: string | null, excerpt?: string | null } | null } | null } | null };
 
 export type GatsbyImageSharpFixedFragment = { base64?: string | null, width: number, height: number, src: string, srcSet: string };
 

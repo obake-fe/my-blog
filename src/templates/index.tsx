@@ -68,7 +68,7 @@ export const query = graphql`
           }
           contents {
             childMarkdownRemark {
-              excerpt(pruneLength: 75)
+              excerpt(pruneLength: 120)
             }
           }
           publishDate(formatString: "YYYY/MM/DD")

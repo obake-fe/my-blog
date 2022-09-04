@@ -61,7 +61,7 @@ const SEO = ({
     }) => {
       const seo = {
         title: title || defaultTitle,
-        description: defaultDescription || description,
+        description: description || defaultDescription,
         image: pathname ? `/ogp${pathname}/thumbnail.png` : `/${defaultBanner}`,
         url: `${pathname || '/'}`
       };

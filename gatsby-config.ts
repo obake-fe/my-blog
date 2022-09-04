@@ -70,7 +70,7 @@ const plugins: GatsbyConfig['plugins'] = [
             },
             meta: {
               title: '',
-              author: 'obake_fe                   Obake Engineer Blog'
+              author: 'obake_fe              Obake Engineer Blog'
             },
             fontFile: [
               {

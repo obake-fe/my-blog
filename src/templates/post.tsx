@@ -69,7 +69,12 @@ const Post = ({ data, pageContext }: Props) => {
 
   return (
     <Layout>
-      <SEO title={title} pathname={slug} article />
+      <SEO
+        title={title}
+        pathname={slug}
+        description={contents.childMarkdownRemark.excerpt}
+        article
+      />
       <div>
         <Container>
           <PostTitle>{title}</PostTitle>
@@ -111,6 +116,7 @@ export const query = graphql`
       contents {
         childMarkdownRemark {
           html
+          excerpt(pruneLength: 120)
         }
       }
     }
