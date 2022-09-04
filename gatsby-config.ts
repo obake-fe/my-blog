@@ -1,6 +1,7 @@
 import type { GatsbyConfig } from 'gatsby';
 import path from 'path';
 import { site } from './config/site';
+import { colors } from './config/theme';
 
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`
@@ -47,12 +48,12 @@ const plugins: GatsbyConfig['plugins'] = [
             image: {
               width: 1200,
               height: 630,
-              backgroundColor: '#e2eadd'
+              backgroundColor: colors.black.blue
             },
             style: {
               title: {
                 fontFamily: 'Noto Sans JP',
-                fontColor: '#333333',
+                fontColor: colors.white.base,
                 fontWeight: 'Bold',
                 fontSize: 56,
                 paddingTop: 50,
@@ -62,7 +63,7 @@ const plugins: GatsbyConfig['plugins'] = [
               },
               author: {
                 fontFamily: 'Noto Sans JP',
-                fontColor: '#333333',
+                fontColor: colors.white.base,
                 fontWeight: 'Bold',
                 fontSize: 42
               }
